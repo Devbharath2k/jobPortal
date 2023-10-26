@@ -1,11 +1,13 @@
 import React from "react";
 import "./Candidate.css";
 import logo from "../assets/IT.png";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 //
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+
 
 
 function Candidate() {
@@ -157,6 +159,7 @@ function Candidate() {
                             <p class="mb-0 mt-4 text-center">
                               <Link to="#" class="link">
                                 New  <span className=""> Candidate Sign Up</span>
+
                               </Link>
                             </p>
                           </div>
@@ -206,6 +209,7 @@ function Candidate() {
                               <a to="#" class="link">
                                 New <span className="">Recruiter Sign Up</span>
                               </a>
+
                             </p>
                           </div>
                         </div>
