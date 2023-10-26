@@ -1,0 +1,40 @@
+.login {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.login input[type = "checkbox"]{
+    position: unset;
+}
+body {
+    background: #75e2e9 !important;
+}
+input[type="email"] , input[type="password"]{
+    background-color: transparent !important;
+}
+
+img.logonew {
+    height: 75px;
+    position: absolute;
+    left: -24px;
+    top: 0;
+    transform: rotate(319deg);
+}
+
+img.logonew {
+    height: 75px;
+    position: absolute;
+    left: -24px;
+    top: 0;
+    transform: rotate(319deg);
+}
+
+.logonew1 {
+    position: absolute;
+    background: #4835d4;
+    color: #ffffff;
+    padding: 26px 65px 5px;
+    top: -10px;
+    left: -69px;
+    transform: rotate(319deg);
+    font-family: monospace;
+}
