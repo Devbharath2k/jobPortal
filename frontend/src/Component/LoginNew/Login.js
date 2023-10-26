@@ -5,7 +5,7 @@ export default function Login() {
     return (
         <div className='col-8 mx-auto py-5 main' style={{ "height": "100vh" }}>
             <div className='row login  h-100' >
-                <div className=' text-black rounded-start-3 col-md-6 bg-white h-100 align-items-center d-flex flex-column justify-content-center position-relative'>
+                <div className=' text-black overflow-hidden rounded-start-3 col-md-6 bg-white h-100 align-items-center d-flex flex-column justify-content-center position-relative'>
                     <img className='logonew d-none' src={Logo} />
                     <p className='mb-0 logonew1'>HIRE-IT</p>
                     <form>
