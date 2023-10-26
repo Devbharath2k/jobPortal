@@ -1,5 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+ import "../Style/employer_profile.css"
 
 const Employer_profile = () => {
   return (
@@ -9,44 +10,42 @@ const Employer_profile = () => {
           Employer Profile
         </p>
         <div className="row my-5 justify-content-center">
-            
           <div className=" col-md-10 card">
             <div className="card-body text-center">
-                <div className="row">
-                    <div className="col">
-                    <label for="exampleFormControlInput1" className="form-label">
+              <div className="row">
+                <div className="col">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Role Name
                   </label>
-                    </div>
-                    <div className="col">
-                    <label for="exampleFormControlInput1" className="form-label">
+                </div>
+                <div className="col">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Number of openings
                   </label>
-                    </div>
-                    <div className="col">
-                    <label for="exampleFormControlInput1" className="form-label">
+                </div>
+                <div className="col">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Budget
                   </label>
-                    </div>
-                    <div className="col">
-                    <label for="exampleFormControlInput1" className="form-label">
+                </div>
+                <div className="col">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Experiance
                   </label>
-                    </div>
-                    <div className="col">
-                    <label for="exampleFormControlInput1" className="form-label">
+                </div>
+                <div className="col">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Availability
                   </label>
-                    </div>
-                    <div className="col">
-                    <label for="exampleFormControlInput1" className="form-label">
+                </div>
+                <div className="col">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Location
                   </label>
-                    </div>
                 </div>
+              </div>
               <div className="row justify-content-center">
                 <div className="col">
-                  
                   <input
                     type="text"
                     name="Role Name"
@@ -56,8 +55,6 @@ const Employer_profile = () => {
                   />
                 </div>
                 <div className="col">
-                  
-
                   <input
                     type="number"
                     name="Number of openings"
@@ -68,8 +65,6 @@ const Employer_profile = () => {
                   />
                 </div>
                 <div className="col">
-                  
-
                   <input
                     type="number"
                     name="Budget"
@@ -80,8 +75,6 @@ const Employer_profile = () => {
                   />
                 </div>
                 <div className="col">
-                  
-
                   <input
                     type="number"
                     name="Budget"
@@ -93,7 +86,6 @@ const Employer_profile = () => {
                 </div>
 
                 <div className="col-md-2">
-                  
                   <input
                     type="text"
                     className="form-control"
@@ -101,14 +93,14 @@ const Employer_profile = () => {
                     name=""
                   />
                 </div>
-                <div className="col-md-2">
-                  
+                <div className="col-md-2 d-flex">
                   <input
                     type="text"
                     className="form-control"
                     placeholder="location"
                     name=""
                   />
+                  <span className="ms-2 "><i class="bi bi-trash-fill"></i></span>
                 </div>
               </div>
             </div>

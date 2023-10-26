@@ -1,7 +1,7 @@
 import React from "react";
 import "./Candidate.css";
 import logo from "../assets/IT.png";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 //
 import { useFormik } from 'formik';
@@ -9,44 +9,46 @@ import * as Yup from 'yup';
 
 
 function Candidate() {
+  const [formKey, setFormKey] = useState(0);
+  const navigate = useNavigate();
+
+  const getFormConfig = () => {
+    return {
+      initialValues: {
+        email: '',
+        password: '',
+      },
+      validationSchema: Yup.object({
+        email: Yup.string()
+          .email('Invalid email address')
+          .required('Email is required'),
+        password: Yup.string()
+          // .min(6, 'Password must be at least 6 characters')
+          .required('Password is required'),  
+      }),
+    };
+  };
 
   const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .email('Invalid email address')
-        .required('Email is required'),
-      password: Yup.string()
-        .min(6, 'Password must be at least 6 characters')
-        .required('Password is required'),
-    }),
+    ...getFormConfig(), // Set initial form values and validation schema
     onSubmit: values => {
       // Handle form submission here
       console.log('Form submitted with values:', values);
     },
   });
-    
 
+  const switchForm = () => {
+    console.log("key", formKey);
+    console.log("trigg");
+    // Increment the key to reset the form state
+    setFormKey(prevKey => prevKey + 1);
+    // Reset the form values and validation schema
+    formik.setValues(getFormConfig().initialValues);
+    formik.setErrors({});
+    formik.setTouched({});
+  };
 
-  const navigate = useNavigate()
-
-
-const handleLogin = (user)=>{
-  if(user === "candidate"){
-        navigate("/Employer_Status")
-  }else{
-    navigate("/employer_profile")
-  }
-
-}
-
-
-
-
-
+  const handleLogin =()=>{}
   return (
     <div id="login_page">
       <nav className="navbar navbar-expand-lg">
@@ -96,6 +98,7 @@ const handleLogin = (user)=>{
                     type="checkbox"
                     id="reg-log"
                     name="reg-log"
+                     onChange={switchForm}
                   />
                   <label for="reg-log" />
                   <div class="card-3d-wrap mx-auto">
@@ -104,6 +107,7 @@ const handleLogin = (user)=>{
                         <div class="center-wrap">
                           <div class="section text-center">
                             <h4 class="mb-4 pb-3 mt-5 text-white"> Candidate Log In</h4>
+                            <form onSubmit={formik.handleSubmit}>
                             <div class="form-group">
                               <input
                                 type="email"
@@ -112,43 +116,44 @@ const handleLogin = (user)=>{
                                 placeholder="Your Email"
                                 id="logemail"
                                 autocomplete="off"
-                               
-                               
+
+
                                 name="email"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.email}
                               />
                               <span className="text-danger">
-                               {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
-        ) : null}
-        </span>
+                                {formik.touched.email && formik.errors.email ? (
+                                  <div>{formik.errors.email}</div>
+                                ) : null}
+                              </span>
                               <i class="input-icon uil uil-at" />
                             </div>
                             <div class="form-group mt-2">
                               <input
                                 // type="password"
                                 // name="logpass"
-                                 class="form-style"
-                                // placeholder="Your Password"
+                                class="form-style"
+                                placeholder="Your Password"
                                 // id="logpass"
                                 // autocomplete="off"
                                 //
                                 type="password"
-                                id="password"
+                                // id="password"
                                 name="password"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.password}
                               />
                               <span className="text-danger">
-                               {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
-        ) : null}</span>
+                                {formik.touched.password && formik.errors.password ? (
+                                  <div>{formik.errors.password}</div>
+                                ) : null}</span>
                               <i class="input-icon uil uil-lock-alt" />
                             </div>
-                           <button className="btn btn-primary mt-3" type={"submit"} onClick={()=>handleLogin("candidate")}>Submit</button>
+                            <button className="btn btn-primary mt-3" type={"submit"} >Submit</button>
+                            </form>
                             <p class="mb-0 mt-4 text-center">
                               <Link to="#" class="link">
                                 New  <span className=""> Candidate Sign Up</span>
@@ -165,26 +170,38 @@ const handleLogin = (user)=>{
                             <div class="form-group">
                               <input
                                 type="email"
-                                name="logemail"
+                                // name="logemail"
                                 class="form-style mb-2"
                                 placeholder="Your Email"
-                                id="logemail"
+                                // id="logemail"
                                 autocomplete="off"
+                                //
+                                name="email"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.email}
                               />
                               <i class="input-icon uil uil-at" />
                             </div>
                             <div class="form-group mt-2">
                               <input
-                                type="password"
-                                name="logpass"
+                                // type="password"
+                                // name="logpass"
                                 class="form-style"
-                                placeholder="Your Password"
-                                id="logpass"
-                                autocomplete="off"
+                                 placeholder="Your Password"
+                                // id="logpass"
+                                // autocomplete="off"
+                                //
+                                type="password"
+                                // id="password"
+                                name="password"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.password}
                               />
                               <i class="input-icon uil uil-lock-alt" />
                             </div>
-                           <button className="btn btn-primary mt-4" onClick={()=>handleLogin("recruiter")}>Submit</button>
+                            <button className="btn btn-primary mt-4" onClick={() => handleLogin("recruiter")}>Submit</button>
                             <p class="mb-0 mt-4 text-center">
                               <a to="#" class="link">
                                 New <span className="">Recruiter Sign Up</span>
