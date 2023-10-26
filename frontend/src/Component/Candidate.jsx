@@ -1,7 +1,9 @@
 import React from "react";
 import "./Candidate.css";
 import logo from "../assets/IT.png";
-// import { Link } from 'react-router-dom';
+import RegisterCandidate from "./RegisterCandidate";
+import RegisterEmployer from "./RegisterEmployer";
+import { Link } from 'react-router-dom';
 
 
 function Candidate() {
@@ -26,9 +28,9 @@ function Candidate() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                {/* <Link className="nav-link active" aria-current="page" to="#">
+                <Link className="nav-link active" aria-current="page" to="#">
                   Home
-                </Link> */}
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" to="#">
@@ -86,9 +88,9 @@ function Candidate() {
                             </div>
                            <button className="btn btn-primary mt-3">Submit</button>
                             <p class="mb-0 mt-4 text-center">
-                              {/* <Link to="#" class="link">
+                              <Link to="">
                                 New user <span className=""> Candidate Sign Up</span>
-                              </Link> */}
+                              </Link>
                             </p>
                           </div>
                         </div>
@@ -122,9 +124,9 @@ function Candidate() {
                             </div>
                            <button className="btn btn-primary mt-4">Submit</button>
                             <p class="mb-0 mt-4 text-center">
-                              <a to="#" class="link">
+                              <Link to="/RegisterEmployer" class="link">
                                 New user <span className="">Employer Sign Up</span>
-                              </a>
+                              </Link>
                             </p>
                           </div>
                         </div>
