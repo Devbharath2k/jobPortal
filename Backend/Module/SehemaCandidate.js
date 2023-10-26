@@ -1,39 +1,37 @@
 const mongoose = require("mongoose");
 
-const blogSchema = new Schema({
+const CandidateSchema = new mongoose.Schema({
   fname: {
-    typeof: "string",
+    type: String,  // Corrected "typeof" to "type" and "string" to String
     required: true
   },
   lname: {
-    typeof: "string",
+    type: String,
     required: true
   },
   email: {
-    typeof: "string",
+    type: String,
     required: true,
     unique: true
   },
-  phone:{
-    type:"Number",
+  phone: {
+    type: Number,  // Corrected "typeof" to "type" and "Number" to Number
     required: true
   },
-  
   password: {
-    type: "String",
+    type: String,
     required: true
   },
   company: {
-    type: "string"
+    type: String
   },
   salary: {
-    type: "Number",
+    type: Number,
     required: true
   },
-
   Experience: {
-    type: "string"
+    type: String
   }
 });
 
-export default mongoose.model("candidate", blogSchema);
+module.exports = mongoose.model("Candidate", CandidateSchema);

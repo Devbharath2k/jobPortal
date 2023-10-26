@@ -1,39 +1,38 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;  
 
-const blogSchema = new Schema({
+const EmployerSchema = new Schema({
   fname: {
-    typeof: "string",
+    type: String,  
     required: true
   },
   lname: {
-    typeof: "string",
+    type: String,
     required: true
   },
   email: {
-    typeof: "string",
+    type: String,
     required: true,
     unique: true
   },
-  phone:{
-    type:"Number",
+  phone: {
+    type: Number,  
     required: true
   },
-  
   password: {
-    type: "String",
+    type: String,  
     required: true
   },
   company: {
-    type: "string"
+    type: String
   },
   salary: {
-    type: "Number",
+    type: Number,
     required: true
   },
-
-  Experience: {
-    type: "string"
+  experience: {
+    type: String
   }
 });
 
-export default mongoose.model("Emplpyer", blogSchema);
+module.exports = mongoose.model("Employer", EmployerSchema);  // Corrected the model name to "Employer"
