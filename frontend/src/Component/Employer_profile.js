@@ -62,6 +62,7 @@ const Employer_profile = () => {
                     type="number"
                     name="Number of openings"
                     className="form-control"
+                    min={"0"}
                     placeholder="1 "
                     id=""
                   />
@@ -74,6 +75,7 @@ const Employer_profile = () => {
                     name="Budget"
                     className="form-control"
                     placeholder="CTC"
+                    min={"0"}
                     id=""
                   />
                 </div>
@@ -85,6 +87,7 @@ const Employer_profile = () => {
                     name="Budget"
                     className="form-control"
                     placeholder="YRS"
+                    min={"0"}
                     id=""
                   />
                 </div>
