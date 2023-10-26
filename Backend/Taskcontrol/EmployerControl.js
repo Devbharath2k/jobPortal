@@ -116,4 +116,10 @@ const EmployerdeleteMethod = async (req, res) => {
   }
 };
 
-module.exports = { EmployerPostMethod, EmployergetMethod, EmployergettingID, EmployerPutMethod, EmployerdeleteMethod };
+module.exports = {
+  EmployerPostMethod,
+  EmployergetMethod,
+  EmployergettingID,
+  EmployerPutMethod,
+  EmployerdeleteMethod
+};
