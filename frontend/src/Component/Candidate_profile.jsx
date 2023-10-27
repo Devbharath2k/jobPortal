@@ -46,7 +46,6 @@ const CandidateProfile = () => {
                     <div className="col"><span>Expected CTC</span></div>
                     <div className="col"><span>Location</span></div>
                     <div className="col text-center">
-                        <i className="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
                         <i className="bi bi-plus-circle-fill plus-icon text-dark fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
                     </div>
                 </div>
