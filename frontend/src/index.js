@@ -7,11 +7,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { BrowserRouter } from "react-router-dom";
 
+import "./Style/mainStyle.css"
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-  <App/>
+    <App />
   </BrowserRouter>
 );
 
