@@ -15,6 +15,7 @@ import CandidateReg from "./Component/Register/CandidateReg";
 
 function App() {
 
+
   const [userRole, setUserRole] = useState(null);
 
   const handleAuthentication = (role) => {
@@ -37,7 +38,7 @@ function App() {
         <Routes>
           <Route  path="/" element={<Candidate onAuthentication={handleAuthentication}/>} >
                <Route index path="/" element={<Candidate_profile />} />
-               {/* <Route  path="/Candidate_status" element={<Candidate_status />} /> */}
+               <Route  path="/Candidate_profile" element={<Candidate_profile />} />
           </Route>        
           <Route path="*" element={<h1>Page not Found</h1>} />        
         </Routes>
