@@ -51,11 +51,8 @@ const Employer_profile = () => {
     const hasEmptyFields = emptyFieldsData.some((role) => Object.values(role).some((value) => value));
   
     if (hasEmptyFields) {
-      // Handle empty fields (show an error message, prevent form submission, etc.)
       console.error("Error: All fields must be filled out.");
     } else {
-      // No empty fields, proceed with form submission or API call
-      // Send formData to your API or perform necessary actions here
       console.log(formData);
     }
   };
@@ -83,9 +80,9 @@ const Employer_profile = () => {
             <i class="bi bi-plus-circle-fill plus-icon" onClick={addRole}></i>
             </div>
       </div>
-      {/* ...your existing code... */}
+
       <form onSubmit={handleSubmit} >
-            {/* ... your input fields ... */}
+   
             {formData.map((role, index) => (
              <div key={index} className={`row justify-content-center job pt-3 ${emptyFields[index].roleName ? 'has-error' : ''}`}>
     
@@ -93,8 +90,7 @@ const Employer_profile = () => {
                   <input
                     type="text"
                     name="roleName"
-                    className={`form-control `}
-        
+                    className={`form-control `}   
                     placeholder="Role Name"
                     value={role.roleName}
                     onChange={(e) => handleInputChange(index, e)}
