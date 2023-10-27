@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-// import "../Style/employer_profile.css"
-// import { Link } from "react-router-dom";
+import "../Style/employer_profile.css"
+import { Link } from "react-router-dom";
 
-const Candidate_profile = () => {
+const UpdateCandidate = () => {
   const [roleCount, setRoleCount] = useState(1);
   const [formData, setFormData] = useState([{ roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
   const [emptyFields, setEmptyFields] = useState(Array.from({ length: formData.length }, () => ({})));
@@ -30,7 +30,6 @@ const Candidate_profile = () => {
       return Object.fromEntries(Object.entries(role).map(([key, value]) => [key, value === '']));
     });
 
-
     setEmptyFields(emptyFieldsData);
 
     const hasEmptyFields = emptyFieldsData.some((role) => Object.values(role).some((value) => value));
@@ -52,22 +51,24 @@ const Candidate_profile = () => {
 
   return (
 
-    <div id="employer_profile" className="main-bg2 employer_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
-      <div className="col-md-10 border p-4 rounded-3 opacity">
-        <h2 className="py-2 text-center" style={{"font-family":" cursive"}}>Candidate Profile</h2>
-        <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-white justify-content-center text-start border-bottom">
+    <div id="update_candidate" className="main-bg2 employer_profile d-flex justify-content-center flex-column h-100vh px-3 overflow-hidden">
+      <div className=" border p-4 rounded-3 bg-light">
+        <div className="row">
+          
+        <h2 className="py-2 text-center text-primary" style={{"font-family":" cursive"}}>Update Candidate</h2>
+        {/* <div className=" text-end"><Link to={"/employer_Status"}>view status</Link></div> */}
+           </div>
+        <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-center text-secondary justify-content-center text-start border-bottom">
 
-          {/* <div className="col "><span className="">cursor</span></div> */}
-          <div className="col"> <span>TechStack</span></div>
-          <div className="col"><span>Experience</span></div>
-          <div className="col"><span>Expected Ctc</span></div>
-          <div className="col"><span>Location</span></div>
-          {/* <div className="col"><span>Days</span></div> */}
+          <div className="col "><span className="">Candidate Name</span></div>
+          <div className="col"> <span>Role</span></div>
+          <div className="col"><span>Date</span></div>
+          <div className="col"><span>Status</span></div>
+          <div className="col"><span>Command</span></div>
           {/* <div className="col"><span>Location</span></div> */}
           <div className="col text-center">
-            <i class="bi bi-plus-circle-fill plus-icon text-dark fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
+            <i class="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
           </div>
-
         </div>
         {/* ...your existing code... */}
         <form onSubmit={handleSubmit} >
@@ -78,52 +79,73 @@ const Candidate_profile = () => {
               <div className="col p-3">
                 <input
                   type="text"
-                  name="Role"
+                  name="roleName"
                   className={`form-control `}
 
-                  placeholder="Role Name"
+                  placeholder="Name"
+                  value={role.name}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+
+              </div>
+              <div className="col p-3">
+                <input
+                  type="text"
+                  name="roleName"
+                  className="form-control"
+                  placeholder="roleName"
                   value={role.roleName}
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
-
               </div>
               <div className="col p-3">
                 <input
-                  type="number"
-                  name="experience"
+                  type="date"
+                  name="budget"
                   className="form-control"
-                  min={0}
-                  placeholder="expereience"
-                  value={role.openings}
+                 
+                //   placeholder="Budget"
+                  value={role.date}
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
               </div>
               <div className="col p-3">
                 <input
-                  type="number"
-                  name="Expected CTC"
+                  type="text"
+                  name="status"
                   className="form-control"
                   min={0}
-                  placeholder="Lpa"
-                  value={role.budget}
+                  placeholder="status"
+                  value={role.status}
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
               </div>
               <div className="col p-3">
                 <input
-                  type="number"
-                  name="Location"
+                  type="text"
                   className="form-control"
-                  min={0}
+                  placeholder="command"
+                  name="command"
+                  value={role.command}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+              </div>
+              {/* <div className="col p-3">
+                <input
+                  type="text"
+                  className="form-control"
                   placeholder="Location"
-                  value={role.experience}
+                  name="location"
+                  value={role.location}
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
-              </div>
+              </div> */}
               <div className="col text-center p-3">
                 <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
                   <i className="bi bi-trash-fill delete-icon cursor" title="Delete the row" style={{ fontSize: "20px" }}></i>
@@ -131,11 +153,11 @@ const Candidate_profile = () => {
               </div>
             </div>
           ))}
-          <button type="submit" className="btn btn-outline-light mx-auto d-block px-4 submit-button">Submit</button>
+          <button type="submit" className="btn btn-outline-primary mx-auto d-block px-4 submit-button">Submit</button>
         </form>
       </div>
     </div>
   );
 };
 
-export default Candidate_profile;
+export default UpdateCandidate;

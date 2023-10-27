@@ -57,6 +57,7 @@ const Employer_profile = () => {
         <div className=" text-end"><Link to={"/employer_Status"} className="text-dark text-decoration-none fw-semibold">view status <i class="bi bi-arrow-right"></i></Link></div>
         <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-white justify-content-center text-start border-bottom">
 
+
           <div className="col "><span className="">cursor</span></div>
           <div className="col"> <span>Openings</span></div>
           <div className="col"><span>Budget</span></div>

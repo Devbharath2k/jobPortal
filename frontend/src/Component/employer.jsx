@@ -17,8 +17,7 @@ const Employer = ({ onAuthentication }) => {
                   ></source>
                 </video>
             </div>
-            <div className='col-10'>
-               
+            <div className='col-10'>             
                         <Outlet/>
             </div>
         </div>
