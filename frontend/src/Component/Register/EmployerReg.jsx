@@ -2,7 +2,9 @@ import React from 'react'
 
 function EmployerReg() {
   return (
-    <div>EmployerReg</div>
+    <div>
+      <p>Emplyer</p>
+    </div>
   )
 }
 
