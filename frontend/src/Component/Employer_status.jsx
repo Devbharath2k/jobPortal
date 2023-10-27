@@ -30,15 +30,13 @@ const Employer_Status = () => {
 
   return (
     <div className=''>
-       
-
     <div className="main-bg2 employer_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
       <div className="col-md-10 border p-4 rounded-3 opacity">
         <h2 className="py-2 text-center " style={{"font-family":" cursive"}}>Employer Status</h2>
         <div className=" text-end"><Link to={"/"} className="text-dark text-decoration-none fw-semibold">Add Jobs <i class="bi bi-arrow-right"></i></Link></div>
         <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-white justify-content-center text-start border-bottom">
 
-          <div className="col "><span className="">S.No</span></div>
+          <div className="col"><span className="">S.No</span></div>
           <div className="col"> <span>Role Name</span></div>
           <div className="col"><span>Openings</span></div>
           <div className="col"><span>Remaining openings</span></div>
@@ -70,10 +68,10 @@ const Employer_Status = () => {
             </div>
           ))}
       </div>
+      <div className='candidate_list'>
+            <Candidate_list/>
     </div>
-    <div className='candidate_list'>
-                        <Candidate_list/>
-    </div>
+    </div>  
     </div>
     
 
