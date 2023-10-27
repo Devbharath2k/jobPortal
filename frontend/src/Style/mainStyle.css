@@ -1,20 +1,18 @@
-
-
-.h-100vh{
+.h-100vh {
     min-height: 100vh;
-  }
+}
 
-.cursor{
+.cursor {
     cursor: pointer;
 }
 
-.main-bg{
+.main-bg {
     background-color: rgb(72, 53, 212);
 }
 
-.main-bg2{
+.main-bg2 {
     background: url("https://media.istockphoto.com/id/1175053786/photo/empty-dark-blue-with-black-vignette-studio-well-use-as-background.webp?b=1&s=170667a&w=0&k=20&c=9nhEI3-wIOd3x6nWXP-jcC5Rybfr52YDU_dI2QScNoE=")no-repeat center /cover;
-    background: linear-gradient(349deg, rgba(1,0,5,1) 0%, rgba(57,235,167,1) 100%);
+    background: linear-gradient(349deg, rgba(1, 0, 5, 1) 0%, rgba(57, 235, 167, 1) 100%);
 }
 
 .opacity::after {
@@ -28,4 +26,22 @@
     z-index: -1;
 }
 
-.opacity {position: relative;z-index: 6;}
+.opacity {
+    position: relative;
+    z-index: 6;
+}
+
+video {
+    position: absolute;
+    z-index: -1;
+    width: 17%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logout {
+    position: absolute;
+    width: auto;
+    right: 3px;
+    top: 3px;
+}
