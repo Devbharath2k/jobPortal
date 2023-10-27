@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 
-const Candidate_Status = () => {
+const Employer_Status = () => {
     const [status, setStatus] = useState([
         {role:"Frontend-development",
         openings: 10,
@@ -24,10 +25,17 @@ const Candidate_Status = () => {
 
   return (
     <div className=''>
-        <div className="container my-5">
+        <div className="container-fluid">
         <p className="display-6 text-center">Employer status</p>
-        <div className="d-flex justify-content-end">
-            <button className="btn btn-danger ">Add jobs</button>
+        <div className='row'>
+            <div className=''>
+            <div className="d-flex justify-content-end">
+            
+                <Link to={"/"}>
+                <button className="btn btn-danger ">
+                
+                Add jobs</button>
+                </Link>
         </div>
         <table className="table  table-striped justify-content-center text-center">
             <thead>
@@ -53,6 +61,11 @@ const Candidate_Status = () => {
                         ))}
             </tbody>
         </table>
+            </div>
+
+
+        </div>
+        
     </div>
 
    
@@ -61,7 +74,7 @@ const Candidate_Status = () => {
   )
 }
 
-export default Candidate_Status
+export default Employer_Status
 
 
 
