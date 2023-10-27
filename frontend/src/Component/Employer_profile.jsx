@@ -20,138 +20,139 @@ const Employer_profile = () => {
     setFormData(newFormData);
   };
 
-  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     // Validation: Check if any form field is empty
     const emptyFieldsData = formData.map((role) => {
       return Object.fromEntries(Object.entries(role).map(([key, value]) => [key, value === '']));
     });
-  
+
     setEmptyFields(emptyFieldsData);
-  
+
     const hasEmptyFields = emptyFieldsData.some((role) => Object.values(role).some((value) => value));
-  
+
     if (hasEmptyFields) {
       console.error("Error: All fields must be filled out.");
     } else {
       console.log(formData);
     }
   };
-  
-  
+
+
 
   const addRole = () => {
     setRoleCount(roleCount + 1);
     setFormData([...formData, { roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
-    setEmptyFields([...emptyFields, {}]); 
+    setEmptyFields([...emptyFields, {}]);
   };
 
   return (
-    <div id="employer_profile" className="employer_profile text-center h-100vh overflow-hidden">
-      <div className="row align-items-center justify-content-between">
-           <h2 className="py-5">Employer Profile</h2>
-           <Link to={"/employer_Status"}>view status</Link>
-      </div>
-      
-      <div className="row labels align-items-center justify-content-center">
-            
-            <div className="col">Role Name</div>
-            <div className="col"> Openings</div>
-            <div className="col">Budget</div>
-            <div className="col">Experience</div>
-            <div className="col">Days</div>
-            <div className="col">Location</div>
-            <div className="col">
-            <i class="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
-            </div>
-      </div>
 
-      <form onSubmit={handleSubmit} >
-   
-            {formData.map((role, index) => (
-             <div key={index} className={`row justify-content-center job pt-3 ${emptyFields[index].roleName ? 'has-error' : ''}`}>
-    
-             <div className="col">
-                  <input
-                    type="text"
-                    name="roleName"
-                    className={`form-control `}   
-                    placeholder="Role Name"
-                    value={role.roleName}
-                    onChange={(e) => handleInputChange(index, e)}
-                    required
-                  />
-                </div>
-                <div className="col">
-                  <input
-                    type="number"
-                    name="openings"
-                    className="form-control"
-                    min={0}
-                    placeholder="Number of Openings"
-                    value={role.openings}
-                    onChange={(e) => handleInputChange(index, e)}
-                    required
-                  />
-                </div>
-                <div className="col">
-                  <input
-                    type="number"
-                    name="budget"
-                    className="form-control"
-                    min={0}
-                    placeholder="Budget"
-                    value={role.budget}
-                    onChange={(e) => handleInputChange(index, e)}
-                    required
-                  />
-                </div>
-                <div className="col">
-                  <input
-                    type="number"
-                    name="experience"
-                    className="form-control"
-                    min={0}
-                    placeholder="Experience"
-                    value={role.experience}
-                    onChange={(e) => handleInputChange(index, e)}
-                    required
-                  />
-                </div>
-                <div className="col-md-2">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Days"
-                    name="days"
-                    value={role.days}
-                    onChange={(e) => handleInputChange(index, e)}
-                    required
-                  />
-                </div>
-                <div className="col d-flex">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Location"
-                    name="location"
-                    value={role.location}
-                    onChange={(e) => handleInputChange(index, e)}
-                    required
-                  />
-                </div>
-                <div className="col">
-                  <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
-                    <i className="bi bi-trash-fill delete-icon" style={{ fontSize: "20px" }}></i>
-                  </span>
-                </div>
+    <div id="employer_profile" className="main-bg2 employer_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
+      <div className="col-md-10 border p-4 rounded-3 bg-light">
+        <h2 className="py-2 text-center text-primary" style={{"font-family":" cursive"}}>Employer Profile</h2>
+        <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-secondary justify-content-center text-start border-bottom">
+
+          <div className="col "><span className="">cursor</span></div>
+          <div className="col"> <span>Openings</span></div>
+          <div className="col"><span>Budget</span></div>
+          <div className="col"><span>Experience</span></div>
+          <div className="col"><span>Days</span></div>
+          <div className="col"><span>Location</span></div>
+          <div className="col text-center">
+            <i class="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
+          </div>
+        </div>
+        {/* ...your existing code... */}
+        <form onSubmit={handleSubmit} >
+          {/* ... your input fields ... */}
+          {formData.map((role, index) => (
+            <div key={index} className={`row justify-content-center job pt-3 ${emptyFields[index].roleName ? 'has-error' : ''}`}>
+
+              <div className="col p-3">
+                <input
+                  type="text"
+                  name="roleName"
+                  className={`form-control `}
+
+                  placeholder="Role Name"
+                  value={role.roleName}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+
               </div>
-            ))}
-        <button type="submit" className="btn btn-primary px-4 submit-button">Submit</button>
-      </form>
+              <div className="col p-3">
+                <input
+                  type="number"
+                  name="openings"
+                  className="form-control"
+                  min={0}
+                  placeholder="Number of Openings"
+                  value={role.openings}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+              </div>
+              <div className="col p-3">
+                <input
+                  type="number"
+                  name="budget"
+                  className="form-control"
+                  min={0}
+                  placeholder="Budget"
+                  value={role.budget}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+              </div>
+              <div className="col p-3">
+                <input
+                  type="number"
+                  name="experience"
+                  className="form-control"
+                  min={0}
+                  placeholder="Experience"
+                  value={role.experience}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+              </div>
+              <div className="col p-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Days"
+                  name="days"
+                  value={role.days}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+              </div>
+              <div className="col p-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Location"
+                  name="location"
+                  value={role.location}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+              </div>
+              <div className="col text-center p-3">
+                <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
+                  <i className="bi bi-trash-fill delete-icon cursor" title="Delete the row" style={{ fontSize: "20px" }}></i>
+                </span>
+              </div>
+            </div>
+          ))}
+          <button type="submit" className="btn btn-outline-primary mx-auto d-block px-4 submit-button">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };

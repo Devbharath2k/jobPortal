@@ -6,13 +6,16 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { BrowserRouter } from "react-router-dom";
-import Login from "./Component/LoginNew/Login";
+import Employer_Status from "./Component/Employer_status";
+import Employer_profile from "./Component/Employer_profile";
+import "./Style/mainStyle.css"
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <App />
-    {/* <Login/> */}
+
   </BrowserRouter>
 );
 
