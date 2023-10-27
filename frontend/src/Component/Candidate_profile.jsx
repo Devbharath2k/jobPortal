@@ -1,148 +1,132 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+// import "../Style/employer_profile.css"
+// import { Link } from "react-router-dom";
 
-function CandidateUpdate() {
-    const [candidates, setCandidates] = useState([
-        {
-            name: '',
-            role: 'Testing',
-            date: '',
-            status: '',
-            command: '',
-            experience: '',
-            expectedCTC: '',
-            location: '',
-        },
-    ]);
+const Candidate_profile = () => {
+  const [roleCount, setRoleCount] = useState(1);
+  const [formData, setFormData] = useState([{ roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
+  const [emptyFields, setEmptyFields] = useState(Array.from({ length: formData.length }, () => ({})));
 
-    const [labels] = useState(['TechStack', 'Experience', 'Expected CTC', 'Location']);
-    const maxRows = 3;
+  const handleInputChange = (index, e) => {
+    const { name, value } = e.target;
+    const newFormData = [...formData];
+    newFormData[index][name] = value;
+    setFormData(newFormData);
+  };
 
-    const handleCandidateChange = (e, index) => {
-        const { name, value } = e.target;
-        setCandidates((prevCandidates) =>
-            prevCandidates.map((candidate, i) => (i === index ? { ...candidate, [name]: value } : candidate))
-        );
-    };
+  const handleDelete = (index) => {
+    const newFormData = [...formData];
+    newFormData.splice(index, 1);
+    setFormData(newFormData);
+  };
 
-    const handleAddCandidate = () => {
-        if (candidates.length < maxRows) {
-            setCandidates((prevCandidates) => [
-                ...prevCandidates,
-                {
-                    name: '',
-                    role: 'Testing',
-                    date: '',
-                    status: '',
-                    command: '',
-                    experience: '',
-                    expectedCTC: '',
-                    location: '',
-                },
-            ]);
-        }
-    };
 
-    const handleRemoveCandidate = (index) => {
-        if (candidates.length > 1) {
-            const updatedCandidates = candidates.filter((_, i) => i !== index);
-            setCandidates(updatedCandidates);
-        }
-    };
 
-    const handleCandidateSubmit = () => {
-        // Handle submission logic here
-        console.log('Candidates:', candidates);
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    return (
-        <div>
-            <div className="container my-5">
-                <p className="display-6 text-center">Candidate Profile</p>
-            </div>
+    // Validation: Check if any form field is empty
+    const emptyFieldsData = formData.map((role) => {
+      return Object.fromEntries(Object.entries(role).map(([key, value]) => [key, value === '']));
+    });
 
-            <div className="container">
-                <div className="card">
-                    <div className="card-body text-center">
-                        <div className="row justify-content-end">
-                            <div className="col mb-3">
-                                <button className="btn btn-primary" onClick={handleAddCandidate}>
-                                    Add
-                                </button>
-                            </div>
-                        </div>
-                        <div className="row justify-content-center">
-                            {labels.map((label, index) => (
-                                <div className="col" key={index}>
-                                    <label htmlFor={`candidateLabel${index}`} className="form-label">
-                                        {label}
-                                    </label>
-                                </div>
-                            ))}
-                        </div>
-                        {candidates.map((candidate, index) => (
-                            <div className="row justify-content-center mt-2 position-relative" key={index}>
-                                <div className="col">
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={candidate.name}
-                                        onChange={(e) => handleCandidateChange(e, index)}
-                                        className="form-control"
-                                        placeholder="Name"
-                                    />
-                                </div>
-                                <div className="col">
-                                    <input
-                                        type="text"
-                                        name="experience"
-                                        value={candidate.experience}
-                                        onChange={(e) => handleCandidateChange(e, index)}
-                                        className="form-control"
-                                        placeholder="Experience"
-                                    />
-                                </div>
-                                <div className="col">
-                                    <input
-                                        type="text"
-                                        name="expectedCTC"
-                                        value={candidate.expectedCTC}
-                                        onChange={(e) => handleCandidateChange(e, index)}
-                                        className="form-control"
-                                        placeholder="LPA"
-                                    />
-                                </div>
-                                <div className="col">
-                                    <input
-                                        type="text"
-                                        name="location"
-                                        value={candidate.location}
-                                        onChange={(e) => handleCandidateChange(e, index)}
-                                        className="form-control"
-                                        placeholder="Location"
-                                    />
-                                </div>
-                                <div className="col">
-                                    <button
-                                        className="btn btn-danger"
-                                        onClick={() => handleRemoveCandidate(index)}
-                                    >
-                                        Remove
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
+    setEmptyFields(emptyFieldsData);
 
-                        <div>
-                            <button className="btn btn-primary mt-3" onClick={handleCandidateSubmit}>
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    const hasEmptyFields = emptyFieldsData.some((role) => Object.values(role).some((value) => value));
+
+    if (hasEmptyFields) {
+      console.error("Error: All fields must be filled out.");
+    } else {
+      console.log(formData);
+    }
+  };
+
+
+
+  const addRole = () => {
+    setRoleCount(roleCount + 1);
+    setFormData([...formData, { roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
+    setEmptyFields([...emptyFields, {}]);
+  };
+
+  return (
+
+    <div id="candidate_profile" className="main-bg2 employer_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
+      <div className=" border p-4 rounded-3 bg-light">
+        <h2 className="py-2 text-center text-primary" style={{"font-family":" cursive"}}>Candidate Profile</h2>
+        <div className="row labels py-3 text-center align-items-center fw-semibold text-capitalize text-secondary justify-content-center text-start border-bottom">
+          <div className="col-3"> <span>TechStack</span></div>
+          <div className="col-2"><span>Experience</span></div>
+          <div className="col-3"><span>Expected Ctc</span></div>
+          <div className="col-3"><span>Location</span></div>
+          <div className="col-1 text-center">
+            <i class="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
+          </div>
         </div>
-    );
-}
+        <form onSubmit={handleSubmit} >
+          {formData.map((role, index) => (
+            <div key={index} className={` text-center row justify-content-center job pt-3 ${emptyFields[index].roleName ? 'has-error' : ''}`}>
+              <div className="col-3 p-3">
+                <input
+                  type="text"
+                  name="Role"
+                  className={`form-control `}
+                  placeholder="Role Name"
+                  value={role.roleName}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
 
-export default CandidateUpdate;
+              </div>
+              <div className="col-2 p-3">
+                <input
+                  type="number"
+                  name="experience"
+                  className="form-control"
+                  min={0}
+                  placeholder="expereience"
+                  value={role.openings}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+              </div>
+              <div className="col-3 p-3">
+                <input
+                  type="number"
+                  name="Expected CTC"
+                  className="form-control"
+                  min={0}
+                  placeholder="Lpa"
+                  value={role.budget}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+              </div>
+              <div className="col-3 p-3">
+                <input
+                  type="number"
+                  name="Location"
+                  className="form-control"
+                  min={0}
+                  placeholder="Location"
+                  value={role.experience}
+                  onChange={(e) => handleInputChange(index, e)}
+                  required
+                />
+              </div>
 
+              <div className="col-1 text-center p-3">
+                <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
+                  <i className="bi bi-trash-fill delete-icon cursor" title="Delete the row" style={{ fontSize: "20px" }}></i>
+                </span>
+              </div>
+            </div>
+          ))}
+          <button type="submit" className="btn btn-outline-primary mx-auto d-block px-4 submit-button">Submit</button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Candidate_profile;

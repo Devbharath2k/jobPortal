@@ -1,24 +1,21 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
-import Candidate_list from './Candidate_List';
 
-
-const Employer_Status = () => {
+const Candidate_list = () => {
     const [status, setStatus] = useState([
         {
-            role: "Frontend-development",
-            openings: 10,
-            remaining_openings: 3,
-            status: "open",
-            comments: "still open"
+            name: "Dev BHARATH",
+            role: "Developer",
+            date: "20-10-23",
+            status: "l1 completed",
+            comments: "waiting for update"
         },
         {
-            role: "Bankend-development",
-            openings: 10,
-            remaining_openings: 3,
-            status: "open",
-            comments: "still open"
+            name: "BHARATH",
+            role: "Developer",
+            date: "20-10-23",
+            status: "l1 completed",
+            comments: "waiting for update"
         },
     ]);
 
@@ -27,25 +24,19 @@ const Employer_Status = () => {
 
 
     return (
-        <div className=''>
+        <div className='pt-5'>
             <div className="container-fluid">
-                <p className="display-6 text-center">Employer status</p>
+                <h5 className=" text-center"> Candidate_list</h5>
                 <div className='row'>
                     <div className=''>
-                        <div className="d-flex justify-content-end">
-                            <Link to={"/"}>
-                                <button className="btn btn-danger ">
-                                    Add jobs
-                                </button>
-                            </Link>
-                        </div>
+
                         <table className="table  table-striped justify-content-center text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">S.No</th>
-                                    <th scope="col">Role Name</th>
-                                    <th scope="col">Openings</th>
-                                    <th scope="col">Remaining openings</th>
+                                    <th scope="col"> Name</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Date</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Comments</th>
                                 </tr>
@@ -54,9 +45,9 @@ const Employer_Status = () => {
                                 {status.map((item, index) => (
                                     <tr key={index}>
                                         <th scope="row">{index + 1}</th>
+                                        <td>{item.name}</td>
                                         <td>{item.role}</td>
-                                        <td>{item.openings}</td>
-                                        <td>{item.remaining_openings}</td>
+                                        <td>{item.date}</td>
                                         <td>{item.status}</td>
                                         <td>{item.comments}</td>
                                     </tr>
@@ -65,9 +56,7 @@ const Employer_Status = () => {
                         </table>
                     </div>
                 </div>
-                <div className='candidate_list'>
-                        <Candidate_list/>
-                </div>
+
 
             </div>
 
@@ -77,7 +66,7 @@ const Employer_Status = () => {
     )
 }
 
-export default Employer_Status
+export default Candidate_list
 
 
 

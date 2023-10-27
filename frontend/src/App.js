@@ -1,4 +1,6 @@
 import React from "react";
+
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,18 +9,20 @@ import { Route,Routes } from "react-router-dom";
 import Employer_Status from './Component/Employer_status';
 import Employer_profile from './Component/Employer_profile';
 import Candidate_profile from './Component/Candidate_profile';
-import CandidateUpdate from "./Component/Candidate_profile"
+// import CandidateUpdate from "./Component/Candidate_profile"
 import RegisterCandidate from "./Component/RegisterCandidate";
 // import RegisterEmployer from "./Component/RegisterEmployer";
 import Employer from "./Component/employer";
-import Candidate from "./Component/candidate.jsx";
 import UpdateCandidate from "./Component/updateCandidate";
-
-
+import Candidate from "./Component/candidate.jsx"
 import Login from "./Component/LoginNew/Login";
-
+import EmployerStatus from './Component/Employer_status'; // PascalCase
+import EmployerProfile from './Component/Employer_profile'; // PascalCase
+import EmployerReg from "./Component/Register/EmployerReg";
+import CandidateReg from "./Component/Register/CandidateReg";
 
 function App() {
+
 
   const [userRole, setUserRole] = useState(null);
 
@@ -31,13 +35,10 @@ function App() {
       return (
         <Routes>
           <Route path="/" element={< Employer onAuthentication={handleAuthentication}/>} >
-                 <Route index path="/" element ={<UpdateCandidate />} />
-                 <Route  path="/employer_Status" element ={<Employer_Status />} />
-                 <Route path="/UpdateCandidate" element={< UpdateCandidate />} />
-          </Route>         
-
-          <Route path="*" element={<h1>Page not Found</h1>} />
-         
+                 <Route index path="/" element ={<Employer_profile />} />
+                 <Route  path="/employer_Status" element ={<Employer_Status />} />             
+                 <Route path="*" element={<h1>Page not Found</h1>} />   
+          </Route>            
         </Routes>
       );
     } else if (userRole === 'candidate') {
@@ -45,7 +46,7 @@ function App() {
         <Routes>
           <Route  path="/" element={<Candidate onAuthentication={handleAuthentication}/>} >
                <Route index path="/" element={<Candidate_profile />} />
-               {/* <Route  path="/Candidate_status" element={<Candidate_status />} /> */}
+               <Route  path="/Candidate_profile" element={<Candidate_profile />} />
           </Route>        
           <Route path="*" element={<h1>Page not Found</h1>} />        
 
