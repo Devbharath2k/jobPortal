@@ -11,7 +11,8 @@ import CandidateUpdate from "./Component/Candidate_profile"
 import RegisterCandidate from "./Component/RegisterCandidate";
 // import RegisterEmployer from "./Component/RegisterEmployer";
 import Employer from "./Component/employer";
-import Candidate from "./Component/candidate.jsx"
+import Candidate from "./Component/candidate.jsx";
+import UpdateCandidate from "./Component/updateCandidate";
 
 
 import Login from "./Component/LoginNew/Login";
@@ -30,10 +31,13 @@ function App() {
       return (
         <Routes>
           <Route path="/" element={< Employer onAuthentication={handleAuthentication}/>} >
-                 <Route index path="/" element ={<Employer_profile />} />
+                 <Route index path="/" element ={<UpdateCandidate />} />
                  <Route  path="/employer_Status" element ={<Employer_Status />} />
+                 <Route path="/UpdateCandidate" element={< UpdateCandidate />} />
           </Route>         
+
           <Route path="*" element={<h1>Page not Found</h1>} />
+         
         </Routes>
       );
     } else if (userRole === 'candidate') {
@@ -44,6 +48,7 @@ function App() {
                {/* <Route  path="/Candidate_status" element={<Candidate_status />} /> */}
           </Route>        
           <Route path="*" element={<h1>Page not Found</h1>} />        
+
         </Routes>
       );
     } else {
@@ -51,8 +56,9 @@ function App() {
       return (
         <Routes>
           <Route path="/" element={<Login onAuthentication={handleAuthentication} />} />
-          {/* <Route path="/RegisterEmployer" element={<RegisterEmployer onAuthentication={handleAuthentication} />} /> */}
+          {/* <Route path="/RegisterEmployer" element={<RegisterEmployer onAuthentication={handleAuthentication} />} /> */} 
           <Route path="/RegisterCandidate" element={<RegisterCandidate onAuthentication={handleAuthentication} />} />
+
         </Routes>
       );
     }

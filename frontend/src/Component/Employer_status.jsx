@@ -29,12 +29,11 @@ const Employer_Status = () => {
         <p className="display-6 text-center">Employer status</p>
         <div className='row'>
             <div className=''>
-            <div className="d-flex justify-content-end">
-            
+            <div className="d-flex justify-content-end">          
                 <Link to={"/"}>
-                <button className="btn btn-danger ">
-                
-                Add jobs</button>
+                <button className="btn btn-danger ">               
+                Add jobs
+                </button>
                 </Link>
         </div>
         <table className="table  table-striped justify-content-center text-center">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../Style/employer_profile.css"
 import { Link } from "react-router-dom";
 
-const Employer_profile = () => {
+const UpdateCandidate = () => {
   const [roleCount, setRoleCount] = useState(1);
   const [formData, setFormData] = useState([{ roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
   const [emptyFields, setEmptyFields] = useState(Array.from({ length: formData.length }, () => ({})));
@@ -51,21 +51,21 @@ const Employer_profile = () => {
 
   return (
 
-    <div id="employer_profile" className="main-bg2 employer_profile d-flex justify-content-center flex-column h-100vh px-3 overflow-hidden">
+    <div id="update_candidate" className="main-bg2 employer_profile d-flex justify-content-center flex-column h-100vh px-3 overflow-hidden">
       <div className=" border p-4 rounded-3 bg-light">
         <div className="row">
           
-        <h2 className="py-2 text-center text-primary" style={{"font-family":" cursive"}}>Employer Profile</h2>
-        <div className=" text-end"><Link to={"/employer_Status"}>view status</Link></div>
+        <h2 className="py-2 text-center text-primary" style={{"font-family":" cursive"}}>Update Candidate</h2>
+        {/* <div className=" text-end"><Link to={"/employer_Status"}>view status</Link></div> */}
            </div>
         <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-center text-secondary justify-content-center text-start border-bottom">
 
-          <div className="col "><span className="">cursor</span></div>
-          <div className="col"> <span>Openings</span></div>
-          <div className="col"><span>Budget</span></div>
-          <div className="col"><span>Experience</span></div>
-          <div className="col"><span>Days</span></div>
-          <div className="col"><span>Location</span></div>
+          <div className="col "><span className="">Candidate Name</span></div>
+          <div className="col"> <span>Role</span></div>
+          <div className="col"><span>Date</span></div>
+          <div className="col"><span>Status</span></div>
+          <div className="col"><span>Command</span></div>
+          {/* <div className="col"><span>Location</span></div> */}
           <div className="col text-center">
             <i class="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
           </div>
@@ -82,8 +82,8 @@ const Employer_profile = () => {
                   name="roleName"
                   className={`form-control `}
 
-                  placeholder="Role Name"
-                  value={role.roleName}
+                  placeholder="Name"
+                  value={role.name}
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
@@ -91,36 +91,35 @@ const Employer_profile = () => {
               </div>
               <div className="col p-3">
                 <input
-                  type="number"
-                  name="openings"
+                  type="text"
+                  name="roleName"
                   className="form-control"
-                  min={0}
-                  placeholder="Number of Openings"
-                  value={role.openings}
+                  placeholder="roleName"
+                  value={role.roleName}
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
               </div>
               <div className="col p-3">
                 <input
-                  type="number"
+                  type="date"
                   name="budget"
                   className="form-control"
-                  min={0}
-                  placeholder="Budget"
-                  value={role.budget}
+                 
+                //   placeholder="Budget"
+                  value={role.date}
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
               </div>
               <div className="col p-3">
                 <input
-                  type="number"
-                  name="experience"
+                  type="text"
+                  name="status"
                   className="form-control"
                   min={0}
-                  placeholder="Experience"
-                  value={role.experience}
+                  placeholder="status"
+                  value={role.status}
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
@@ -129,14 +128,14 @@ const Employer_profile = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Days"
-                  name="days"
-                  value={role.days}
+                  placeholder="command"
+                  name="command"
+                  value={role.command}
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
               </div>
-              <div className="col p-3">
+              {/* <div className="col p-3">
                 <input
                   type="text"
                   className="form-control"
@@ -146,7 +145,7 @@ const Employer_profile = () => {
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
-              </div>
+              </div> */}
               <div className="col text-center p-3">
                 <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
                   <i className="bi bi-trash-fill delete-icon cursor" title="Delete the row" style={{ fontSize: "20px" }}></i>
@@ -161,4 +160,4 @@ const Employer_profile = () => {
   );
 };
 
-export default Employer_profile;
+export default UpdateCandidate;
