@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../Style/employer_profile.css"
+import { Link } from "react-router-dom";
 
 const Employer_profile = () => {
   const [roleCount, setRoleCount] = useState(1);
@@ -19,24 +20,7 @@ const Employer_profile = () => {
     setFormData(newFormData);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
 
-  //   // Validation: Check if any form field is empty
-  //   const hasEmptyFields = formData.some((role) => Object.values(role).some((value) => value === ''));
-
-  //   if (hasEmptyFields) {
-  //     // Handle empty fields (show an error message, prevent form submission, etc.)
-  //     console.error("Error: All fields must be filled out.");
-  //      // Highlight empty fields by adding a class
-  //   const emptyFields = formData.map((role) => Object.fromEntries(Object.entries(role).map(([key, value]) => [key, value === ''])));
-  //   setEmptyFields(emptyFields);
-  //   } else {
-  //     // All fields are filled, proceed with form submission or API call
-  //     // Send formData to your API or perform necessary actions here
-  //     console.log(formData);
-  //   }
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,11 +35,8 @@ const Employer_profile = () => {
     const hasEmptyFields = emptyFieldsData.some((role) => Object.values(role).some((value) => value));
 
     if (hasEmptyFields) {
-      // Handle empty fields (show an error message, prevent form submission, etc.)
       console.error("Error: All fields must be filled out.");
     } else {
-      // No empty fields, proceed with form submission or API call
-      // Send formData to your API or perform necessary actions here
       console.log(formData);
     }
   };
@@ -69,6 +50,7 @@ const Employer_profile = () => {
   };
 
   return (
+
     <div id="employer_profile" className="main-bg2 employer_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
       <div className="col-md-10 border p-4 rounded-3 bg-light">
         <h2 className="py-2 text-center text-primary" style={{"font-family":" cursive"}}>Employer Profile</h2>
@@ -101,6 +83,7 @@ const Employer_profile = () => {
                   onChange={(e) => handleInputChange(index, e)}
                   required
                 />
+
               </div>
               <div className="col p-3">
                 <input

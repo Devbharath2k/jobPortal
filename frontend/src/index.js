@@ -14,8 +14,8 @@ import "./Style/mainStyle.css"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <App/>
-    <Employer_profile/>
+    <App />
+
   </BrowserRouter>
 );
 
