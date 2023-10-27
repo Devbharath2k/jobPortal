@@ -135,7 +135,7 @@ export default function Login({ onAuthentication }) {
               <div className="col-md-6">
                 <Link
                   className="text-center justify-content-center d-flex mt-3  text-white"
-                  to={"/RegisterEmployer"}
+                  to={"/EmployerReg"}
                 >
                   New user Register
                 </Link>
