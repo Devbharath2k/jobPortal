@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 
 const Employer_Status = () => {
@@ -27,9 +28,14 @@ const Employer_Status = () => {
         <div className="container-fluid">
         <p className="display-6 text-center">Employer status</p>
         <div className='row'>
-            <div className='col-lg-10'>
+            <div className=''>
             <div className="d-flex justify-content-end">
-            <button className="btn btn-danger ">Add jobs</button>
+            
+                <Link to={"/"}>
+                <button className="btn btn-danger ">
+                
+                Add jobs</button>
+                </Link>
         </div>
         <table className="table  table-striped justify-content-center text-center">
             <thead>
@@ -56,9 +62,7 @@ const Employer_Status = () => {
             </tbody>
         </table>
             </div>
-            <div className='col-lg-2'>
-                
-            </div>
+
 
         </div>
         

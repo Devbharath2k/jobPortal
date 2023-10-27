@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../Style/employer_profile.css"
+import { Link } from "react-router-dom";
 
 const Employer_profile = () => {
   const [roleCount, setRoleCount] = useState(1);
@@ -19,24 +20,7 @@ const Employer_profile = () => {
     setFormData(newFormData);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
   
-  //   // Validation: Check if any form field is empty
-  //   const hasEmptyFields = formData.some((role) => Object.values(role).some((value) => value === ''));
-  
-  //   if (hasEmptyFields) {
-  //     // Handle empty fields (show an error message, prevent form submission, etc.)
-  //     console.error("Error: All fields must be filled out.");
-  //      // Highlight empty fields by adding a class
-  //   const emptyFields = formData.map((role) => Object.fromEntries(Object.entries(role).map(([key, value]) => [key, value === ''])));
-  //   setEmptyFields(emptyFields);
-  //   } else {
-  //     // All fields are filled, proceed with form submission or API call
-  //     // Send formData to your API or perform necessary actions here
-  //     console.log(formData);
-  //   }
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,9 +50,13 @@ const Employer_profile = () => {
   };
 
   return (
-    <div id="employer_profile" className="employer_profile py-5  text-center">
-      <h2 className="py-5">Employer_profile</h2>
-      <div className="row py-3 labels align-items-center justify-content-center">
+    <div id="employer_profile" className="employer_profile text-center h-100vh overflow-hidden">
+      <div className="row align-items-center justify-content-between">
+           <h2 className="py-5">Employer Profile</h2>
+           <Link to={"/employer_Status"}>view status</Link>
+      </div>
+      
+      <div className="row labels align-items-center justify-content-center">
             
             <div className="col">Role Name</div>
             <div className="col"> Openings</div>
@@ -76,8 +64,8 @@ const Employer_profile = () => {
             <div className="col">Experience</div>
             <div className="col">Days</div>
             <div className="col">Location</div>
-            <div className="col bg-body-secondary">
-            <i class="bi bi-plus-circle-fill plus-icon" onClick={addRole}></i>
+            <div className="col">
+            <i class="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
             </div>
       </div>
 
@@ -162,7 +150,7 @@ const Employer_profile = () => {
                 </div>
               </div>
             ))}
-        <button type="submit" className="p-1 my-5 bg-primary rounded-3 submit-button">Submit</button>
+        <button type="submit" className="btn btn-primary px-4 submit-button">Submit</button>
       </form>
     </div>
   );

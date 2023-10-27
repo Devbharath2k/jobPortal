@@ -5,9 +5,6 @@
 .login input[type = "checkbox"]{
     position: unset;
 }
-body {
-    background: #75e2e9 !important;
-}
 input[type="email"] , input[type="password"]{
     background-color: transparent !important;
 }

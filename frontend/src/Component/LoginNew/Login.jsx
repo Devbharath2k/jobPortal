@@ -26,7 +26,7 @@ const handleEmployerLogin = ()=>{
     >
       <div className="row login  h-100">
         <div className=" text-primary p-0 rounded-start-3 col-md-6 bg-white h-100 align-items-center d-flex flex-column justify-content-center position-relative overflow-hidden">
-          <img className="logonew d-none" src={Logo} />
+          {/* <img className="logonew d-none" src={Logo} /> */}
           <p className="mb-0 logonew1 d-none">HIRE-IT</p>
           <form onClick={handleCandidateLogin}>
             <h3 className="mb-4 text-primary text-capitalize text-center">
