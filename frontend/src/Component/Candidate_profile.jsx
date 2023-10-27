@@ -1,132 +1,117 @@
 import React, { useState } from "react";
-// import "../Style/employer_profile.css"
-// import { Link } from "react-router-dom";
 
-const Candidate_profile = () => {
-  const [roleCount, setRoleCount] = useState(1);
-  const [formData, setFormData] = useState([{ roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
-  const [emptyFields, setEmptyFields] = useState(Array.from({ length: formData.length }, () => ({})));
+const CandidateProfile = () => {
+    const [formData, setFormData] = useState([{ Role: "", experience: 0, Expected_CTC: 0, Location: "" }]);
 
-  const handleInputChange = (index, e) => {
-    const { name, value } = e.target;
-    const newFormData = [...formData];
-    newFormData[index][name] = value;
-    setFormData(newFormData);
-  };
+    const handleInputChange = (index, e) => {
+        const { name, value } = e.target;
+        const newFormData = [...formData];
+        newFormData[index][name] = value;
+        setFormData(newFormData);
+    };
 
-  const handleDelete = (index) => {
-    const newFormData = [...formData];
-    newFormData.splice(index, 1);
-    setFormData(newFormData);
-  };
+    const handleDelete = (index) => {
+        const newFormData = [...formData];
+        newFormData.splice(index, 1);
+        setFormData(newFormData);
+    };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
+        // Validation: Check if any form field is empty
+        const hasEmptyFields = formData.some((role) =>
+            Object.values(role).some((value) => value === "")
+        );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+        if (hasEmptyFields) {
+            console.error("Error: All fields must be filled out.");
+        } else {
+            console.log(formData);
+        }
+    };
 
-    // Validation: Check if any form field is empty
-    const emptyFieldsData = formData.map((role) => {
-      return Object.fromEntries(Object.entries(role).map(([key, value]) => [key, value === '']));
-    });
+    const addRole = () => {
+        setFormData([...formData, { Role: "", experience: 0, Expected_CTC: 0, Location: "" }]);
+    };
 
-    setEmptyFields(emptyFieldsData);
+    return (
+        <div id="candidate_profile" className="main-bg2 candidate_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
+            <div className="col-md-10 border p-4 rounded-3 bg-light">
+                <h2 className="py-2 text-center text-primary" style={{ "fontFamily": "cursive" }}>Candidate Profile</h2>
+                <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-secondary justify-content-center text-start border-bottom">
+                    <div className="col"><span>Role</span></div>
+                    <div className="col"><span>TechStack</span></div>
+                    <div className="col"><span>Experience</span></div>
+                    <div className="col"><span>Expected CTC</span></div>
+                    <div className="col"><span>Location</span></div>
+                    <div className="col text-center">
+                        <i className="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
+                        <i className="bi bi-plus-circle-fill plus-icon text-dark fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
+                    </div>
+                </div>
+                <form onSubmit={handleSubmit}>
+                    {formData.map((role, index) => (
+                        <div key={index} className="row justify-content-center job pt-3">
+                            <div className="col p-3">
+                                <input
+                                    type="text"
+                                    name="Role"
+                                    className="form-control"
+                                    placeholder="Role Name"
+                                    value={role.Role}
+                                    onChange={(e) => handleInputChange(index, e)}
+                                    required
+                                />
+                            </div>
+                            <div className="col p-3">
+                                <input
+                                    type="number"
+                                    name="experience"
+                                    className="form-control"
+                                    min={0}
+                                    placeholder="Experience"
+                                    value={role.experience}
+                                    onChange={(e) => handleInputChange(index, e)}
+                                    required
+                                />
+                            </div>
+                            <div className="col p-3">
+                                <input
+                                    type="number"
+                                    name="Expected_CTC"
+                                    className="form-control"
+                                    min={0}
+                                    placeholder="Lpa"
+                                    value={role.Expected_CTC}
+                                    onChange={(e) => handleInputChange(index, e)}
+                                    required
+                                />
+                            </div>
+                            <div className="col p-3">
+                                <input
+                                    type="text"
+                                    name="Location"
+                                    className="form-control"
+                                    placeholder="Location"
+                                    value={role.Location}
+                                    onChange={(e) => handleInputChange(index, e)}
+                                    required
+                                />
+                            </div>
+                            <div className="col text-center p-3">
+                                <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
+                                    <i className="bi bi-trash-fill delete-icon cursor" title="Delete the row" style={{ fontSize: "20px" }}></i>
+                                </span>
+                            </div>
+                        </div>
+                    ))}
+                    <button type="submit" className="btn btn-outline-light mx-auto d-block px-4 submit-button">Submit</button>
+                </form>
 
-    const hasEmptyFields = emptyFieldsData.some((role) => Object.values(role).some((value) => value));
-
-    if (hasEmptyFields) {
-      console.error("Error: All fields must be filled out.");
-    } else {
-      console.log(formData);
-    }
-  };
-
-
-
-  const addRole = () => {
-    setRoleCount(roleCount + 1);
-    setFormData([...formData, { roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
-    setEmptyFields([...emptyFields, {}]);
-  };
-
-  return (
-
-    <div id="candidate_profile" className="main-bg2 employer_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
-      <div className=" border p-4 rounded-3 bg-light">
-        <h2 className="py-2 text-center text-primary" style={{"font-family":" cursive"}}>Candidate Profile</h2>
-        <div className="row labels py-3 text-center align-items-center fw-semibold text-capitalize text-secondary justify-content-center text-start border-bottom">
-          <div className="col-3"> <span>TechStack</span></div>
-          <div className="col-2"><span>Experience</span></div>
-          <div className="col-3"><span>Expected Ctc</span></div>
-          <div className="col-3"><span>Location</span></div>
-          <div className="col-1 text-center">
-            <i class="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
-          </div>
-        </div>
-        <form onSubmit={handleSubmit} >
-          {formData.map((role, index) => (
-            <div key={index} className={` text-center row justify-content-center job pt-3 ${emptyFields[index].roleName ? 'has-error' : ''}`}>
-              <div className="col-3 p-3">
-                <input
-                  type="text"
-                  name="Role"
-                  className={`form-control `}
-                  placeholder="Role Name"
-                  value={role.roleName}
-                  onChange={(e) => handleInputChange(index, e)}
-                  required
-                />
-
-              </div>
-              <div className="col-2 p-3">
-                <input
-                  type="number"
-                  name="experience"
-                  className="form-control"
-                  min={0}
-                  placeholder="expereience"
-                  value={role.openings}
-                  onChange={(e) => handleInputChange(index, e)}
-                  required
-                />
-              </div>
-              <div className="col-3 p-3">
-                <input
-                  type="number"
-                  name="Expected CTC"
-                  className="form-control"
-                  min={0}
-                  placeholder="Lpa"
-                  value={role.budget}
-                  onChange={(e) => handleInputChange(index, e)}
-                  required
-                />
-              </div>
-              <div className="col-3 p-3">
-                <input
-                  type="number"
-                  name="Location"
-                  className="form-control"
-                  min={0}
-                  placeholder="Location"
-                  value={role.experience}
-                  onChange={(e) => handleInputChange(index, e)}
-                  required
-                />
-              </div>
-
-              <div className="col-1 text-center p-3">
-                <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
-                  <i className="bi bi-trash-fill delete-icon cursor" title="Delete the row" style={{ fontSize: "20px" }}></i>
-                </span>
-              </div>
             </div>
-          ))}
-          <button type="submit" className="btn btn-outline-primary mx-auto d-block px-4 submit-button">Submit</button>
-        </form>
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default Candidate_profile;
+export default CandidateProfile;

@@ -3,21 +3,16 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo2.png";
 export default function Login({ onAuthentication }) {
+  const handleCandidateLogin = () => {
+    console.log("candidate login");
 
+    onAuthentication("candidate");
+  };
+  const handleEmployerLogin = () => {
+    console.log("Employer login");
 
-
-
-const handleCandidateLogin = ()=>{
-  console.log("candidate login")
-  
-  onAuthentication("candidate");
-}
-const handleEmployerLogin = ()=>{
-  console.log("Employer login")
-  
-  onAuthentication("employer");
-}
-
+    onAuthentication("employer");
+  };
 
   return (
     <div
@@ -33,7 +28,9 @@ const handleEmployerLogin = ()=>{
               Looking for a job ?
             </h3>
             <div className="justify-content-center d-flex">
-              <button className="btn btn-primary px-4 " type="submit">Login</button>
+              <button className="btn btn-primary px-4 " type="submit">
+                Login
+              </button>
             </div>
             <div className="mt-4">
               <label
@@ -75,8 +72,11 @@ const handleEmployerLogin = ()=>{
                 </Link>
               </div>
               <div className="col-md-6">
-                <Link className="text-center justify-content-center d-flex mt-3 " to={"/RegisterCandidate"}>
-                      New user register
+                <Link
+                  className="text-center justify-content-center d-flex mt-3 "
+                  to={"/CandidateReg"}
+                >
+                  New user register
                 </Link>
               </div>
             </div>
@@ -133,7 +133,10 @@ const handleEmployerLogin = ()=>{
                 </Link>
               </div>
               <div className="col-md-6">
-                <Link className="text-center justify-content-center d-flex mt-3  text-white" to={"/RegisterEmployer"}>
+                <Link
+                  className="text-center justify-content-center d-flex mt-3  text-white"
+                  to={"/RegisterEmployer"}
+                >
                   New user Register
                 </Link>
               </div>
