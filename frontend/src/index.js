@@ -6,13 +6,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { BrowserRouter } from "react-router-dom";
-import Login from "./Component/LoginNew/Login";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    {/* <App /> */}
-    <Login/>
+  <App/>
   </BrowserRouter>
 );
 
