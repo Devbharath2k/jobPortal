@@ -52,9 +52,9 @@ const Candidate_profile = () => {
   return (
 
     <div id="employer_profile" className="main-bg2 employer_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
-      <div className="col-md-10 border p-4 rounded-3 bg-light">
-        <h2 className="py-2 text-center text-primary" style={{"font-family":" cursive"}}>Candidate Profile</h2>
-        <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-secondary justify-content-center text-start border-bottom">
+      <div className="col-md-10 border p-4 rounded-3 opacity">
+        <h2 className="py-2 text-center" style={{"font-family":" cursive"}}>Candidate Profile</h2>
+        <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-white justify-content-center text-start border-bottom">
 
           {/* <div className="col "><span className="">cursor</span></div> */}
           <div className="col"> <span>TechStack</span></div>
@@ -64,7 +64,7 @@ const Candidate_profile = () => {
           {/* <div className="col"><span>Days</span></div> */}
           {/* <div className="col"><span>Location</span></div> */}
           <div className="col text-center">
-            <i class="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
+            <i class="bi bi-plus-circle-fill plus-icon text-dark fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
           </div>
         </div>
         {/* ...your existing code... */}
@@ -151,7 +151,7 @@ const Candidate_profile = () => {
               </div>
             </div>
           ))}
-          <button type="submit" className="btn btn-outline-primary mx-auto d-block px-4 submit-button">Submit</button>
+          <button type="submit" className="btn btn-outline-light mx-auto d-block px-4 submit-button">Submit</button>
         </form>
       </div>
     </div>
