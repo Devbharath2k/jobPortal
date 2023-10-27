@@ -69,9 +69,9 @@ const Employer_profile = () => {
   };
 
   return (
-    <div id="employer_profile" className="employer_profile py-5  text-center">
-      <h2 className="py-5">Employer_profile</h2>
-      <div className="row py-3 labels align-items-center justify-content-center">
+    <div id="employer_profile" className="employer_profile text-center h-100vh overflow-hidden">
+      <h2 className="py-5 d-none">Employer Profile</h2>
+      <div className="row labels align-items-center justify-content-center">
             
             <div className="col">Role Name</div>
             <div className="col"> Openings</div>
@@ -79,8 +79,8 @@ const Employer_profile = () => {
             <div className="col">Experience</div>
             <div className="col">Days</div>
             <div className="col">Location</div>
-            <div className="col bg-body-secondary">
-            <i class="bi bi-plus-circle-fill plus-icon" onClick={addRole}></i>
+            <div className="col">
+            <i class="bi bi-plus-circle-fill plus-icon text-success fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
             </div>
       </div>
       {/* ...your existing code... */}
@@ -166,7 +166,7 @@ const Employer_profile = () => {
                 </div>
               </div>
             ))}
-        <button type="submit" className="p-1 my-5 bg-primary rounded-3 submit-button">Submit</button>
+        <button type="submit" className="btn btn-primary px-4 submit-button">Submit</button>
       </form>
     </div>
   );
