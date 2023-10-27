@@ -54,6 +54,7 @@ const Employer_profile = () => {
     <div id="employer_profile" className="main-bg2 employer_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
       <div className="col-md-10 border p-4 rounded-3 opacity">
         <h2 className="py-2 text-center " style={{"font-family":" cursive"}}>Employer Profile</h2>
+        <div className=" text-end"><Link to={"/employer_Status"} className="text-dark text-decoration-none fw-semibold">view status <i class="bi bi-arrow-right"></i></Link></div>
         <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-white justify-content-center text-start border-bottom">
 
           <div className="col "><span className="">cursor</span></div>
@@ -72,7 +73,7 @@ const Employer_profile = () => {
           {formData.map((role, index) => (
             <div key={index} className={`row justify-content-center job pt-3 ${emptyFields[index].roleName ? 'has-error' : ''}`}>
 
-              <div className="col p-3">
+              <div className="col">
                 <input
                   type="text"
                   name="roleName"
@@ -85,7 +86,7 @@ const Employer_profile = () => {
                 />
 
               </div>
-              <div className="col p-3">
+              <div className="col">
                 <input
                   type="number"
                   name="openings"
@@ -97,7 +98,7 @@ const Employer_profile = () => {
                   required
                 />
               </div>
-              <div className="col p-3">
+              <div className="col">
                 <input
                   type="number"
                   name="budget"
@@ -109,7 +110,7 @@ const Employer_profile = () => {
                   required
                 />
               </div>
-              <div className="col p-3">
+              <div className="col">
                 <input
                   type="number"
                   name="experience"
@@ -121,7 +122,7 @@ const Employer_profile = () => {
                   required
                 />
               </div>
-              <div className="col p-3">
+              <div className="col">
                 <input
                   type="text"
                   className="form-control"
@@ -132,7 +133,7 @@ const Employer_profile = () => {
                   required
                 />
               </div>
-              <div className="col p-3">
+              <div className="col">
                 <input
                   type="text"
                   className="form-control"
