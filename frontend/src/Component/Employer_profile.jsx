@@ -52,11 +52,10 @@ const Employer_profile = () => {
   return (
 
     <div id="employer_profile" className="main-bg2 employer_profile d-flex justify-content-center flex-column align-items-center  h-100vh px-3 overflow-hidden">
-      <div className="col-md-10 border p-4 rounded-3 opacity">
+      <div className="col-md-11 p-4 rounded-3 opacity">
         <h2 className="py-2 text-center " style={{"font-family":" cursive"}}>Employer Profile</h2>
         <div className=" text-end"><Link to={"/employer_Status"} className="text-dark text-decoration-none fw-semibold">view status <i class="bi bi-arrow-right"></i></Link></div>
         <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-white justify-content-center text-start border-bottom">
-
 
           <div className="col "><span className="">cursor</span></div>
           <div className="col"> <span>Openings</span></div>
@@ -64,7 +63,7 @@ const Employer_profile = () => {
           <div className="col"><span>Experience</span></div>
           <div className="col"><span>Days</span></div>
           <div className="col"><span>Location</span></div>
-          <div className="col text-center">
+          <div className="col-1 text-center">
             <i class="bi bi-plus-circle-fill plus-icon text-dark fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
           </div>
         </div>
@@ -145,7 +144,7 @@ const Employer_profile = () => {
                   required
                 />
               </div>
-              <div className="col text-center p-3">
+              <div className="col-1 text-center p-3">
                 <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
                   <i className="bi bi-trash-fill delete-icon cursor" title="Delete the row" style={{ fontSize: "20px" }}></i>
                 </span>
