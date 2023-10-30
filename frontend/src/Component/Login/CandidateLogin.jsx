@@ -1,53 +1,10 @@
-
 import React from "react";
-// import logo from "../assets/IT.png";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-
+import { Link } from "react-router-dom";
 import "../../Style/Login.css";
 
-
 function CandidateLogin() {
-  
-
-  
-
-
-  const handleLogin =()=>{}
   return (
     <div id="login_page" className="container-fluid">
-      <nav className="navbar navbar-expand-lg">
-        <div className="container-fluid">
-          <Link className="navbar-brand" href="#">
-            {/* <img src={logo} alt="" height={"49px"} /> */}
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="#">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="#">
-                  Link
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
       <div className="container-fluid">
         <div class="section">
           <div class="container">
@@ -63,7 +20,6 @@ function CandidateLogin() {
                     type="checkbox"
                     id="reg-log"
                     name="reg-log"
-                    
                   />
                   <label for="reg-log" />
                   <div class="card-3d-wrap mx-auto">
@@ -71,87 +27,83 @@ function CandidateLogin() {
                       <div class="card-front">
                         <div class="center-wrap">
                           <div class="section text-center">
-                            <h4 class="mb-4 pb-3 mt-5 text-white"> Candidate Log In</h4>
-                            <form onSubmit={formik.handleSubmit}>
-                            <div class="form-group">
-                              <input
-                                type="email"
-                                name="logemail"
-                                class="form-style mb-2"
-                                placeholder="Your Email"
-                                id="logemail"
-                                autocomplete="off"
-                              />
-                              
-                            </div>
-                            <div class="form-group mt-2">
-                              <input
-                                // type="password"
-                                // name="logpass"
-                                class="form-style"
-                                placeholder="Your Password"
-                                // id="logpass"
-                                // autocomplete="off"
-                                //
-                                type="password"
-                                // id="password"
-                                name="password"
-                            
-                              />
-                             
-                            </div>
-                            <button className="btn btn-primary mt-3">Submit</button>
+                            <h4 class="mb-4 pb-3 mt-5 text-white">
+                              {" "}Candidate Log In
+                            </h4>
+                            <form>
+                              <div class="form-group">
+                                <input
+                                  type="email"
+                                  name="logemail"
+                                  class="form-style mb-2"
+                                  placeholder="Your Email"
+                                  autocomplete="off"
+                                />
+                              </div>
+                              <div class="form-group mt-2">
+                                <input
+                                  class="form-style"
+                                  placeholder="Your Password"
+                                  type="password"
+                                  name="password"
+                                />
+                              </div>
+                              <button className="btn btn-primary mt-3">
+                                Submit
+                              </button>
                             </form>
-                            <p class="mb-0 mt-4 text-center">
-                              <Link to="#" class="link">
-                                New  <span className=""> Candidate Sign Up</span>
-                              </Link>
-                            </p>
+                            <div className="row">
+                              <div className="col-md-6">
+                                <p class="mb-0 mt-4 text-center">
+                                  <Link to="#" class="link">
+                                    New{" "}
+                                    <span className=""> Candidate Sign Up</span>
+                                  </Link>
+                                </p>
+                              </div>
+                              <div className="col-md-6">
+                                <p class="mb-0 mt-4 text-center">
+                                  <Link to="#" class="link">
+                                    {" "}
+                                    <span className="">Forget Password</span>
+                                  </Link>
+                                </p>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div class="card-back">
                         <div class="center-wrap">
                           <div class="section text-center">
-                            <h4 class="mb-4 pb-3 mt-4 text-white">Recruiter Login </h4>
+                            <h4 class="mb-4 pb-3 mt-4 text-white">
+                              Recruiter Login{" "}
+                            </h4>
 
                             <div class="form-group">
                               <input
                                 type="email"
-                               
                                 class="form-style mb-2"
                                 placeholder="Your Email"
-                                
                                 autocomplete="off"
                                 //
-                                
                               />
-                             
                             </div>
                             <div class="form-group mt-2">
                               <input
-                                // type="password"
-                                // name="logpass"
                                 class="form-style"
-                                 placeholder="Your Password"
-                                // id="logpass"
-                                // autocomplete="off"
-                                //
+                                placeholder="Your Password"
                                 type="password"
-                                // id="password"
-                                name="password"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.password}
                               />
                               <i class="input-icon uil uil-lock-alt" />
                             </div>
-                            <button className="btn btn-primary mt-4" onClick={() => handleLogin("recruiter")}>Submit</button>
+                            <button className="btn btn-primary mt-4">
+                              Submit
+                            </button>
                             <p class="mb-0 mt-4 text-center">
                               <Link to="#" class="link">
                                 New <span className="">Recruiter Sign Up</span>
                               </Link>
-
                             </p>
                           </div>
                         </div>
