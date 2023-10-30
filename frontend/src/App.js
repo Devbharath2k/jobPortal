@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Login from "./Component/LoginNew/Login";
 import Employer_Status from "./Component/Employer_status";
 import Employer_profile from "./Component/Employer_profile";
 import Candidate_profile from "./Component/Candidate_profile";
@@ -10,6 +9,7 @@ import Candidate from "./Component/candidate.jsx";
 import CandidateReg from "./Component/Register/CandidateReg";
 import EmployerReg from "./Component/Register/EmployerReg";
 import Candiate_status from "./Component/Candidate_status";
+import CandidateLogin from "./Component/Login/CandidateLogin";
 
 function App() {
   const [userRole, setUserRole] = useState(null);
@@ -50,7 +50,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Login onAuthentication={handleAuthentication} />}
+            element={<CandidateLogin onAuthentication={handleAuthentication} />}
           />
           <Route
             path="/EmployerReg"
@@ -70,3 +70,4 @@ function App() {
 }
 
 export default App;
+
