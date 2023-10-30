@@ -17,6 +17,7 @@ const Employer = ({ onAuthentication }) => {
                 <li className="nav-item">
                   <Link to={'/'} className='btn btn-danger logout d-flex' onClick={() => onAuthentication(null)}>
 
+
                     <i class="bi bi-box-arrow-right d-block pe-2"></i>
                     Logout</Link>
                 </li>

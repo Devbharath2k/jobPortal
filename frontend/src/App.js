@@ -1,6 +1,11 @@
 import React from "react";
 import { useState } from "react";
+<<<<<<< HEAD
 import { Route, Routes } from "react-router-dom";
+=======
+import { Route, Routes, Navigate } from "react-router-dom";
+import Login from "./Component/LoginNew/Login";
+>>>>>>> 872dc51ab05b5f76ae477a60373e25e9b94ec40d
 import Employer_Status from "./Component/Employer_status";
 import Employer_profile from "./Component/Employer_profile";
 import Candidate_profile from "./Component/Candidate_profile";
@@ -12,9 +17,11 @@ import Candiate_status from "./Component/Candidate_status";
 import CandidateLogin from "./Component/Login/CandidateLogin";
 
 function App() {
-  const [userRole, setUserRole] = useState(null);
+  const initialUserRole = sessionStorage.getItem('userRole') || null;
+  const [userRole, setUserRole] = useState(initialUserRole);
 
   const handleAuthentication = (role) => {
+    sessionStorage.setItem('userRole', role);
     setUserRole(role);
   };
 
@@ -30,6 +37,7 @@ function App() {
             <Route path="/employer_Status" element={<Employer_Status />} />
             <Route path="*" element={<h1>Page not Found</h1>} />
           </Route>
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       );
     } else if (userRole === "candidate") {

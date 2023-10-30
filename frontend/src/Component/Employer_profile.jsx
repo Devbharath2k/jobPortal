@@ -1,31 +1,47 @@
 import React, { useState } from "react";
 import "../Style/employer_profile.css"
 import { Link } from "react-router-dom";
+
+import axios from "axios";
+
 import Scroll from "./Scroll";
 import Bg from "./Bg";
 
 const Employer_profile = () => {
   const [roleCount, setRoleCount] = useState(1);
-  const [formData, setFormData] = useState([{ roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
+  const [formData, setFormData] = useState([{ roleName: "", openings: null , budget: null, experience: null, notice_period: "", location: "" }]);
   const [emptyFields, setEmptyFields] = useState(Array.from({ length: formData.length }, () => ({})));
 
   const handleInputChange = (index, e) => {
     const { name, value } = e.target;
+    // if(name == "location"){
+    //   const newFormData = [...formData];
+    // newFormData[index][name] = Array.from(e.target.selectedOptions, option => option.value);;
+    // setFormData(newFormData);
+    // }else{
     const newFormData = [...formData];
     newFormData[index][name] = value;
     setFormData(newFormData);
+  // }
+
   };
+console.log("formData",formData)
+
 
   const handleDelete = (index) => {
+    if(roleCount > 1){
+    setRoleCount(roleCount - 1);
     const newFormData = [...formData];
     newFormData.splice(index, 1);
     setFormData(newFormData);
+    }
   };
 
 
 
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
 
     // Validation: Check if any form field is empty
@@ -36,11 +52,27 @@ const Employer_profile = () => {
     setEmptyFields(emptyFieldsData);
 
     const hasEmptyFields = emptyFieldsData.some((role) => Object.values(role).some((value) => value));
+    console.log("hasEmptyFields",hasEmptyFields)
+
 
     if (hasEmptyFields) {
       console.error("Error: All fields must be filled out.");
     } else {
       console.log(formData);
+      let employerId = 12
+      let company = "xyz"
+        axios.post("http://localhost:4000/employerProfilePost",{
+          formData: formData,
+          employerId: employerId,
+          company: company
+        })
+        .then((res)=>{
+              console.log("succes req")
+        })
+        .catch((err)=>{
+              console.log(err)
+        })
+
     }
   };
 
@@ -48,7 +80,7 @@ const Employer_profile = () => {
 
   const addRole = () => {
     setRoleCount(roleCount + 1);
-    setFormData([...formData, { roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
+    setFormData([...formData, { roleName: "", openings: null, budget: null, experience: null, notice_period: "", location: "" }]);
     setEmptyFields([...emptyFields, {}]);
   };
 
@@ -69,11 +101,11 @@ const Employer_profile = () => {
             <div className=" text-end"><Link to={"/employer_Status"} className="text-white text-decoration-none fw-semibold">view status <i class="bi bi-arrow-right"></i></Link></div>
             <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-white justify-content-center text-start border-bottom">
 
-              <div className="col "><span className="">cursor</span></div>
+              <div className="col "><span className="">Role Name</span></div>
               <div className="col"> <span>Openings</span></div>
               <div className="col"><span>Budget</span></div>
               <div className="col"><span>Experience</span></div>
-              <div className="col"><span>Days</span></div>
+              <div className="col"><span>Notice Period</span></div>
               <div className="col"><span>Location</span></div>
               <div className="col-1 text-center">
                 <i class="bi bi-plus-circle-fill plus-icon text-light hover fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
@@ -104,7 +136,7 @@ const Employer_profile = () => {
                       name="openings"
                       className="form-control"
                       min={0}
-                      placeholder="Number of Openings"
+                      placeholder="No of openings"
                       value={role.openings}
                       onChange={(e) => handleInputChange(index, e)}
                       required
@@ -116,7 +148,7 @@ const Employer_profile = () => {
                       name="budget"
                       className="form-control"
                       min={0}
-                      placeholder="Budget"
+                      placeholder="CTC"
                       value={role.budget}
                       onChange={(e) => handleInputChange(index, e)}
                       required
@@ -128,7 +160,7 @@ const Employer_profile = () => {
                       name="experience"
                       className="form-control"
                       min={0}
-                      placeholder="Experience"
+                      placeholder="Exp"
                       value={role.experience}
                       onChange={(e) => handleInputChange(index, e)}
                       required
@@ -139,8 +171,8 @@ const Employer_profile = () => {
                       type="text"
                       className="form-control"
                       placeholder="Days"
-                      name="days"
-                      value={role.days}
+                      name="notice_period"
+                      value={role.notice_period}
                       onChange={(e) => handleInputChange(index, e)}
                       required
                     />
@@ -156,14 +188,14 @@ const Employer_profile = () => {
                       required
                     />
                   </div>
-                  <div className="col-1 text-center p-3">
+                  <div className="col-1 text-center">
                     <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
                       <i className="bi bi-trash-fill delete-icon cursor" title="Delete hover the row" style={{ fontSize: "20px" }}></i>
                     </span>
                   </div>
                 </div>
               ))}
-              <button type="submit" className="btn btn-outline-light mx-auto d-block px-4 submit-button">Submit</button>
+              <button type="submit" className="btn btn-outline-light mx-auto d-block px-4 submit-button mt-4">Submit</button>
             </form>
           </div>
         </div>

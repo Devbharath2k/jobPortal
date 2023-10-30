@@ -31,6 +31,7 @@ const CandidateSchema = new mongoose.Schema({
   Experience: {
     type: String
   }
+ 
 });
 
 module.exports = mongoose.model("Candidate", CandidateSchema);

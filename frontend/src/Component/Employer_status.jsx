@@ -20,6 +20,7 @@ const Employer_Status = () => {
   ]);
 
   return (
+
     <div>
       <h2 className="py-2 text-center" style={{ fontFamily: "cursive" }}>
         Employer Status
