@@ -9,6 +9,7 @@ import Employer from "./Component/employer";
 import Candidate from "./Component/candidate.jsx";
 import CandidateReg from "./Component/Register/CandidateReg";
 import EmployerReg from "./Component/Register/EmployerReg";
+import Candiate_status from "./Component/Candidate_status";
 
 function App() {
   const initialUserRole = sessionStorage.getItem('userRole') || null;
@@ -42,7 +43,7 @@ function App() {
             element={<Candidate onAuthentication={handleAuthentication} />}
           >
             <Route index path="/" element={<Candidate_profile />} />
-            <Route path="/Candidate_profile" element={<Candidate_profile />} />
+            <Route path="/candidate_status" element={<Candiate_status />} />
           </Route>
           <Route path="*" element={<h1>Page not Found</h1>} />
         </Routes>
