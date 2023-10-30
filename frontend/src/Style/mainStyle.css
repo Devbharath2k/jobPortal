@@ -90,6 +90,10 @@ video {
     width: 12px;
   }
 
+  .tab-height::-webkit-scrollbar {
+    width: 5px;
+  }
+
   *::-webkit-scrollbar-track {
     background: #000000;
   }
@@ -373,4 +377,18 @@ video {
     animation-delay: -7s;
     transform-origin: 13vw -16vh;
     box-shadow: 2vmin 0 0.8374367960332745vmin currentColor;
+}
+
+.table-opacity{
+    background: #371843;
+    z-index: 4567;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+}
+
+@media(max-width:768px) {
+    .tab-height{
+        overflow: auto !important;
+    }
 }

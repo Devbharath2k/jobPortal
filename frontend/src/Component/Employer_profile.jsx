@@ -63,106 +63,110 @@ const Employer_profile = () => {
         </p>
         <Scroll />
       </div>
+
       <div className="h-100vh d-flex justify-content-center flex-column align-items-center">
         <div className="opacity col-md-11 rounded-3 overflow-hidden">
-          <div className="tab-height p-4">
-            <div className=" text-end"><Link to={"/employer_Status"} className="text-white text-decoration-none fw-semibold">view status <i class="bi bi-arrow-right"></i></Link></div>
-            <div className="row labels py-3 align-items-center fw-semibold text-capitalize text-white justify-content-center text-start border-bottom">
+          <div className="tab-height overflow-x-hidden pb-4">
+            <div className=" text-end m-4"><Link to={"/employer_Status"} className="text-white text-decoration-none fw-semibold">view status <i class="bi bi-arrow-right"></i></Link></div>
 
-              <div className="col "><span className="">cursor</span></div>
-              <div className="col"> <span>Openings</span></div>
-              <div className="col"><span>Budget</span></div>
-              <div className="col"><span>Experience</span></div>
-              <div className="col"><span>Days</span></div>
-              <div className="col"><span>Location</span></div>
-              <div className="col-1 text-center">
-                <i class="bi bi-plus-circle-fill plus-icon text-light hover fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
-              </div>
-            </div>
             {/* ...your existing code... */}
             <form onSubmit={handleSubmit} >
+              <table className="w-100 mb-3">
+                <thead className="labels text-capitalize text-white text-center table-opacity rounded-top border-bottom">
+                  <td className="col p-4"><span className="">cursor</span></td>
+                  <td className="col"> <span>Openings</span></td>
+                  <td className="col"><span>Budget</span></td>
+                  <td className="col"><span>Experience</span></td>
+                  <td className="col"><span>Days</span></td>
+                  <td className="col"><span>Location</span></td>
+                  <td className="col-1 text-center">
+                    <i class="bi bi-plus-circle-fill plus-icon text-light hover fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
+                  </td>
+                </thead>
+                {formData.map((role, index) => (
+                  <tr key={index} className={` job ${emptyFields[index].roleName ? 'has-error' : ''}`}>
+
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="text"
+                        name="roleName"
+                        className={`form-control `}
+
+                        placeholder="Role Name"
+                        value={role.roleName}
+                        onChange={(e) => handleInputChange(index, e)}
+                        required
+                      />
+
+                    </td>
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="number"
+                        name="openings"
+                        className="form-control"
+                        min={0}
+                        placeholder="Number of Openings"
+                        value={role.openings}
+                        onChange={(e) => handleInputChange(index, e)}
+                        required
+                      />
+                    </td>
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="number"
+                        name="budget"
+                        className="form-control"
+                        min={0}
+                        placeholder="Budget"
+                        value={role.budget}
+                        onChange={(e) => handleInputChange(index, e)}
+                        required
+                      />
+                    </td>
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="number"
+                        name="experience"
+                        className="form-control"
+                        min={0}
+                        placeholder="Experience"
+                        value={role.experience}
+                        onChange={(e) => handleInputChange(index, e)}
+                        required
+                      />
+                    </td>
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Days"
+                        name="days"
+                        value={role.days}
+                        onChange={(e) => handleInputChange(index, e)}
+                        required
+                      />
+                    </td>
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Location"
+                        name="location"
+                        value={role.location}
+                        onChange={(e) => handleInputChange(index, e)}
+                        required
+                      />
+                    </td>
+                    <td className="col-1 text-center p-3">
+                      <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
+                        <i className="bi bi-trash-fill delete-icon cursor" title="Delete hover the row" style={{ fontSize: "20px" }}></i>
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </table>
               {/* ... your input fields ... */}
-              {formData.map((role, index) => (
-                <div key={index} className={`row justify-content-center job pt-3 ${emptyFields[index].roleName ? 'has-error' : ''}`}>
 
-                  <div className="col">
-                    <input
-                      type="text"
-                      name="roleName"
-                      className={`form-control `}
-
-                      placeholder="Role Name"
-                      value={role.roleName}
-                      onChange={(e) => handleInputChange(index, e)}
-                      required
-                    />
-
-                  </div>
-                  <div className="col">
-                    <input
-                      type="number"
-                      name="openings"
-                      className="form-control"
-                      min={0}
-                      placeholder="Number of Openings"
-                      value={role.openings}
-                      onChange={(e) => handleInputChange(index, e)}
-                      required
-                    />
-                  </div>
-                  <div className="col">
-                    <input
-                      type="number"
-                      name="budget"
-                      className="form-control"
-                      min={0}
-                      placeholder="Budget"
-                      value={role.budget}
-                      onChange={(e) => handleInputChange(index, e)}
-                      required
-                    />
-                  </div>
-                  <div className="col">
-                    <input
-                      type="number"
-                      name="experience"
-                      className="form-control"
-                      min={0}
-                      placeholder="Experience"
-                      value={role.experience}
-                      onChange={(e) => handleInputChange(index, e)}
-                      required
-                    />
-                  </div>
-                  <div className="col">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Days"
-                      name="days"
-                      value={role.days}
-                      onChange={(e) => handleInputChange(index, e)}
-                      required
-                    />
-                  </div>
-                  <div className="col">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Location"
-                      name="location"
-                      value={role.location}
-                      onChange={(e) => handleInputChange(index, e)}
-                      required
-                    />
-                  </div>
-                  <div className="col-1 text-center p-3">
-                    <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
-                      <i className="bi bi-trash-fill delete-icon cursor" title="Delete hover the row" style={{ fontSize: "20px" }}></i>
-                    </span>
-                  </div>
-                </div>
-              ))}
               <button type="submit" className="btn btn-outline-light mx-auto d-block px-4 submit-button">Submit</button>
             </form>
           </div>
