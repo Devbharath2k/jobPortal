@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const Sehema = require("../Module/SehemaCandidate.js");
+// const bcrypt = require("bcryptjs");
 
-const Candidatepostmethod = async (req, res) => {
+const Candidatepostmethod  = async (req, res) => {
   const {
     fname,
     lname,
@@ -31,8 +32,8 @@ const Candidatepostmethod = async (req, res) => {
       });
     }
     // const hashedPassword = await bcrypt.hash(password, 10);
-    // s;
     // newUser.password = hashedPassword;
+    
 
     await newUser.save();
 
