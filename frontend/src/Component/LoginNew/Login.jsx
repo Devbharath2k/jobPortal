@@ -19,7 +19,7 @@ export default function Login({ onAuthentication }) {
       className="col-12 mx-auto main overflow-hidden"
       style={{ height: "100vh" }}
     >
-      <div className="row login  h-100">
+      <div className="row login h-100">
         <div className=" text-primary p-0 rounded-start-3 col-md-6 bg-white h-100 align-items-center d-flex flex-column justify-content-center position-relative overflow-hidden">
           {/* <img className="logonew d-none" src={Logo} /> */}
           <p className="mb-0 logonew1 d-none">HIRE-IT</p>
@@ -62,25 +62,74 @@ export default function Login({ onAuthentication }) {
                 id="exampleInputPassword1"
               />
             </div>
-            <div className="row">
-              <div className="col-md-6">
+            <div className="row flex-column">
+              <div className="col-md-12">
                 <Link
                   to={"/"}
-                  className="text-center justify-content-center d-flex mt-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emp_forgot"
+                  className="text-center justify-content-center d-flex mt-3 fw-semibold"
                 >
-                  forget passsword
+                  Forgot passsword?
                 </Link>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <Link
-                  className="text-center justify-content-center d-flex mt-3 "
+                  className="text-center justify-content-center d-flex mt-3 fw-semibold"
                   to={"/CandidateReg"}
                 >
-                  New user register
+                  New user Registeration?
                 </Link>
               </div>
             </div>
           </form>
+        </div>
+        <div
+          className="modal fade"
+          id="emp_forgot"
+          tabIndex={-1}
+          aria-labelledby="exampleModalLabel"
+          data-bs-backdrop="static"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header border-0">
+                <h1 className="modal-title fs-5" id="exampleModalLabel">
+                  EmployeeForgot Password
+                </h1>
+                <button
+                  type="button"
+                  className="btn-close shadow-none"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                />
+              </div>
+              <div className="modal-body px-5">
+                <div>
+                  <input type="email" className="form-control d-block shadow-none border-0 border-bottom rounded-0 border-secondary px-0 mb-3" placeholder="Valid Email" required />
+                </div>
+                <div>
+                  <input type="text" className="form-control shadow-none border-0 border-bottom rounded-0 border-secondary px-0 mb-3" placeholder="OTP" required />
+                </div>
+                <div>
+                  <input type="password" className="form-control shadow-none border-0 border-bottom rounded-0 border-secondary px-0" placeholder="New Password" required />
+                </div>
+              </div>
+              <div className="modal-footer border-0">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         <div
           className="rounded-end-3 p-0 col-md-6 text-white h-100 align-items-center d-flex flex-column justify-content-center"
@@ -123,21 +172,23 @@ export default function Login({ onAuthentication }) {
                 id="exampleInputPassword2"
               />
             </div>
-            <div className="row">
-              <div className="col-md-6">
+            <div className="row flex-column">
+              <div className="col-md-12">
                 <Link
                   to={"/"}
-                  className="text-center justify-content-center d-flex mt-3 text-white"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emp_forgot"
+                  className="text-center justify-content-center d-flex mt-3 fw-semibold text-white "
                 >
-                  forget passsword
+                  Forgot passsword?
                 </Link>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <Link
-                  className="text-center justify-content-center d-flex mt-3  text-white"
+                  className="text-center justify-content-center d-flex mt-3  text-white fw-semibold"
                   to={"/EmployerReg"}
                 >
-                  New user Register
+                  New user Registeration?
                 </Link>
               </div>
             </div>
