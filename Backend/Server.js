@@ -10,7 +10,7 @@ require('dotenv').config();
 
 app.use(express.json());
 app.use(cors());
-app.use("/",JobPortal);
+app.use(JobPortal);
 
 
 mongoose
