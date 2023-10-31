@@ -4,7 +4,7 @@ import axios from "axios";
 import "../../Style/Login.css";
 import { useState } from "react";
 
-function CandidateLogin() {
+function Logins({onAuthentication}) {
   const [CandidateLogin, SetCandidate] = useState({
     email: "",
     password: ""
@@ -15,28 +15,32 @@ function CandidateLogin() {
     password: ""
   });
 
-  const Handlesubmit = event => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:4000/Candidatepost", CandidateLogin)
-      .then(res => {
-        console.log(res.data.data);
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
-  };
+  const Handlesubmit =(event) => {
+      event.preventDefault();
+      onAuthentication("candidate");
+  
 
-  const Handlechange=(event) =>{
+    // axios
+    //   .post("http://localhost:4000/Candidatepost", CandidateLogin)
+    //   .then(res => {
+    //     console.log(res.data.data);
+    //   })
+    //   .catch(err => {
+    //     console.log(err.response);
+    //   });
+   };
+
+  const Handlechange =(event) =>{
     event.preventDefault();
-    axios
-      .post("http://localhost:4000/employerpost", Employer)
-      .then(res => {
-        console.log(res.data.data);
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
+    onAuthentication("employer");
+    // axios
+    //   .post("http://localhost:4000/employerpost", Employer)
+    //   .then(res => {
+    //     console.log(res.data.data);
+    //   })
+    //   .catch(err => {
+    //     console.log(err.response);
+    //   });
   };
   
 
@@ -104,7 +108,7 @@ function CandidateLogin() {
                             <div className="row">
                               <div className="col-md-6">
                                 <p class="mb-0 mt-4 text-center">
-                                  <Link to="#" class="link">
+                                  <Link to="/CandidateReg" class="link">
                                     New{" "}
                                     <span className=""> Candidate Sign Up</span>
                                   </Link>
@@ -157,14 +161,26 @@ function CandidateLogin() {
                                 />
                                 <i class="input-icon uil uil-lock-alt" />
                               </div>
-                             <button className="btn btn-primary mt-3" onClick={Handlechange}>Submit</button>
+                             <button type={"submit"}className="btn btn-primary mt-3" onClick={Handlechange}>Submit</button>
                             </from>
                            
-                            <p class="mb-0 mt-4 text-center">
-                              <Link to="#" class="link">
-                                New <span className="">Recruiter Sign Up</span>
-                              </Link>
-                            </p>
+                            <div className="row">
+                              <div className="col-md-6">
+                                <p class="mb-0 mt-4 text-center">
+                                  <Link to="/EmployerReg" class="link">
+                                    New{" "}
+                                    <span className=""> Employer Sign Up</span>
+                                  </Link>
+                                </p>
+                              </div>
+                              <div className="col-md-6">
+                                <p class="mb-0 mt-4 text-center">
+                                  <Link to="#" class="link">
+                                    {" "}<span className="">Forget Password</span>
+                                  </Link>
+                                </p>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -180,4 +196,4 @@ function CandidateLogin() {
   );
 }
 
-export default CandidateLogin;
+export default Logins;
