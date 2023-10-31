@@ -2,16 +2,15 @@ import React from "react";
 import { useState } from "react";
 
 import { Route, Routes, Navigate } from "react-router-dom";
-import Login from "./Component/LoginNew/Login";
 import Employer_Status from "./Component/Employer_status";
 import Employer_profile from "./Component/Employer_profile";
 import Candidate_profile from "./Component/Candidate_profile";
 import Employer from "./Component/employer";
 import Candidate from "./Component/candidate.jsx";
-import CandidateReg from "./Component/Register/CandidateReg";
-import EmployerReg from "./Component/Register/EmployerReg";
 import Candiate_status from "./Component/Candidate_status";
-import CandidateLogin from "./Component/Login/CandidateLogin";
+import Logins from "./Component/Login/Logins";
+import EmployerReg from "./Component/Login/EmployerReg";
+import CandidateReg from "./Component/Login/CandidateReg";
 
 function App() {
   const initialUserRole = sessionStorage.getItem('userRole') || null;
@@ -55,7 +54,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<CandidateLogin onAuthentication={handleAuthentication} />}
+            element={<Logins onAuthentication={handleAuthentication} />}
           />
           <Route
             path="/EmployerReg"

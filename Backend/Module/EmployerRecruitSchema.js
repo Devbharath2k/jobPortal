@@ -30,7 +30,21 @@ const JobDetailsSchema = new Schema({
   },
   experience: {
     type: String
+  },
+  status:{
+    type: String,
+    default:"open"
+  },
+  remaining_openings:{
+    type:Number,
+    default:null
+  },
+  comments:{
+    type:String
   }
 });
 
 module.exports = mongoose.model("JobDetails", JobDetailsSchema);  // Corrected the model name to "Employer"
+
+
+

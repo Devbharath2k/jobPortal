@@ -19,6 +19,23 @@ const Employer_Status = () => {
     },
   ]);
 
+
+
+
+  // Assume employerId is a variable containing the employer's ID
+const employerId = 123; // Replace this with the actual employer ID
+
+// Make a GET request with the employerId as a query parameter
+axios.get(`http://localhost:4000/getEmployerStatus?employerId=${employerId}`)
+  .then((response) => {
+    // Handle the response data from the backend
+    console.log(response.data);
+  })
+  .catch((error) => {
+    // Handle errors
+    console.error(error);
+  });
+
   return (
 
     <div>

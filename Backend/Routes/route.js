@@ -4,6 +4,7 @@ const router = express.Router();
 const candidate = require("../Taskcontrol/CandidateControl");
 const employer = require("../Taskcontrol/EmployerControl");
 const employerProfile = require("../Taskcontrol/Employer/employerProfile")
+const employerStatus = require("../Taskcontrol/Employer/employerStatus")
 
 router.post("/Candidatepost", candidate.Candidatepostmethod);
 router.get("/candidateget", candidate.CandidategetMethod);
@@ -21,5 +22,7 @@ router.delete("/employer/:id", employer.EmployerPostMethod);
 
 
 router.post("/employerProfilePost",employerProfile)
+router.post("/updateInprogress",employerStatus.updateInprogress)
+router.get("/getEmployerStatus",employerStatus.getEmployerStatus)
 
 module.exports = router;
