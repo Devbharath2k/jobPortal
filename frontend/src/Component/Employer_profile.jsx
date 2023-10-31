@@ -65,22 +65,23 @@ const Employer_profile = () => {
       </div>
 
       <div className="h-100vh d-flex justify-content-center flex-column align-items-center">
-        <div className="opacity col-md-11 rounded-3 overflow-hidden">
-          <div className="tab-height overflow-x-hidden pb-4">
+        <div className="opacity col-12 col-md-11 rounded-3 overflow-hidden">
+          <div className="pb-4">
             <div className=" text-end m-4"><Link to={"/employer_Status"} className="text-white text-decoration-none fw-semibold">view status <i class="bi bi-arrow-right"></i></Link></div>
 
             {/* ...your existing code... */}
             <form onSubmit={handleSubmit} >
-              <table className="w-100 mb-3">
+              <div className="table-responsive tab-height mb-3 " >
+              <table className="w-100 table m-0">
                 <thead className="labels text-capitalize text-white text-center table-opacity rounded-top border-bottom">
-                  <td className="col p-4"><span className="">cursor</span></td>
-                  <td className="col"> <span>Openings</span></td>
-                  <td className="col"><span>Budget</span></td>
-                  <td className="col"><span>Experience</span></td>
-                  <td className="col"><span>Days</span></td>
-                  <td className="col"><span>Location</span></td>
-                  <td className="col-1 text-center">
-                    <i class="bi bi-plus-circle-fill plus-icon text-light hover fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
+                  <td className="col p-md-4 px-5 py-3 ">cursor</td>
+                  <td className="col p-md-4 px-5 py-3 "> Openings</td>
+                  <td className="col p-md-4 px-5 py-3 ">Budget</td>
+                  <td className="col p-md-4 px-5 py-3 ">Experience</td>
+                  <td className="col p-md-4 px-5 py-3 ">Days</td>
+                  <td className="col p-md-4 px-5 py-3 ">Location</td>
+                  <td className="col p-md-4 px-5 py-3  text-center">
+                    <i class="bg-transparent bi bi-plus-circle-fill plus-icon text-light hover fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
                   </td>
                 </thead>
                 {formData.map((role, index) => (
@@ -158,13 +159,14 @@ const Employer_profile = () => {
                       />
                     </td>
                     <td className="col-1 text-center p-3">
-                      <span className="ms-2 text-danger" onClick={() => handleDelete(index)}>
+                      <span className="ms-2 text-danger bg-transparent" onClick={() => handleDelete(index)}>
                         <i className="bi bi-trash-fill delete-icon cursor" title="Delete hover the row" style={{ fontSize: "20px" }}></i>
                       </span>
                     </td>
                   </tr>
                 ))}
               </table>
+              </div>
               {/* ... your input fields ... */}
 
               <button type="submit" className="btn btn-outline-light mx-auto d-block px-4 submit-button">Submit</button>

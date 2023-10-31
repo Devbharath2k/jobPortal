@@ -73,7 +73,7 @@ video {
 }
 
 .tab-height{
-    max-height: 70vh;
+    max-height: 60vh;
     overflow-y: scroll;
 }
 
@@ -86,7 +86,7 @@ video {
   }
 
   /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 12px;
   }
 
@@ -391,4 +391,11 @@ video {
     .tab-height{
         overflow: auto !important;
     }
+    
+  .table-responsive::-webkit-scrollbar-thumb, .table-responsive::-webkit-scrollbar-track, .table-responsive::-webkit-scrollbar {
+    background-color:transparent;
+    border: none;
+  }
+
+
 }
