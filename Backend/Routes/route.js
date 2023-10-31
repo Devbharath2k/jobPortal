@@ -12,7 +12,7 @@ router.get("/candidate/:id", candidate.CandidategettingIdmethod);
 router.put("/candidate/:id", candidate.Candidateputmethod);
 router.delete("/candidate/:id", candidate.Candidatedeletemethod);
 //Candidate Profile router
-router.post("/api/CandidateProfile",Candidate.Candidateprofile)
+router.post("/CandidateProfile",Candidate.createCandidateProfile)
 
 router.post("/employerpost", employer.EmployerPostMethod);
 router.get("/employerget", employer.EmployerPostMethod);
