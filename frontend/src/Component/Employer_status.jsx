@@ -12,7 +12,7 @@ const Employer_Status = () => {
     },
     {
       role: "Backend-development",
-      openings: 10,
+      openings: 15,
       remaining_openings: 3,
       status: "open",
       comments: "still open",

@@ -9,7 +9,7 @@ import Bg from "./Bg";
 
 const Employer_profile = () => {
   const [roleCount, setRoleCount] = useState(1);
-  const [formData, setFormData] = useState([{ roleName: "", openings: null , budget: null, experience: null, notice_period: "", location: "" }]);
+  const [formData, setFormData] = useState([{ roleName: "", openings: "" , budget: "", experience: "", notice_period: "", location: "" }]);
   const [emptyFields, setEmptyFields] = useState(Array.from({ length: formData.length }, () => ({})));
 
   const handleInputChange = (index, e) => {
@@ -68,6 +68,8 @@ console.log("formData",formData)
         })
         .then((res)=>{
               console.log("succes req")
+              setFormData([{ roleName: "", openings:"", budget: "", experience: "", notice_period: "", location: "" }]);
+       
         })
         .catch((err)=>{
               console.log(err)
@@ -80,7 +82,7 @@ console.log("formData",formData)
 
   const addRole = () => {
     setRoleCount(roleCount + 1);
-    setFormData([...formData, { roleName: "", openings: null, budget: null, experience: null, notice_period: "", location: "" }]);
+    setFormData([...formData, { roleName: "", openings: "", budget: "", experience: "", notice_period: "", location: "" }]);
     setEmptyFields([...emptyFields, {}]);
   };
 
@@ -156,7 +158,7 @@ console.log("formData",formData)
                   </div>
                   <div className="col">
                     <input
-                      type="number"
+                      type="text"
                       name="experience"
                       className="form-control"
                       min={0}
