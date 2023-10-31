@@ -134,13 +134,13 @@ const Employer_Status = () => {
                     <td className="col p-3">
                       {item.openings}
                     </td>
-                    <td className="col p-2">
+                    <td className="col p-3">
                       {item.remaining_openings}
                     </td>
-                    <td className="col p-2">
+                    <td className="col p-3">
                       {item.status}
                     </td>
-                    <td className="col p-2">
+                    <td className="col p-3">
                       {item.comments}
                     </td>
                   </tr>

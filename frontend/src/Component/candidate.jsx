@@ -37,8 +37,8 @@ const Candidate = ({ onAuthentication }) => {
             <Outlet />
           </div>
         </div>
-        <footer className='bg-black text-center text-white fw-semibold position-absolute bottom-0 w-100  fs-6 p-2'>
-          Created by <Link to={'/'} className="navbar-brand ps-2" href="#">
+        <footer className='bg-black text-center text-white fw-semibold position-absolute bottom-0 w-100  fs-6 p-2 d-flex justify-content-between'>
+          <p className='m-0'>Created by @Axess Technology</p> <Link to={'/'} className="navbar-brand ps-2" href="#">
             <img src={logo_new} className='logo' style={{ "height": "20px" }} />
           </Link>
         </footer>
