@@ -103,45 +103,50 @@ const Employer_Status = () => {
         <Scroll />
 
       </div>
-      <div className="h-100vh d-flex justify-content-center flex-column align-items-center text-light">
-        <div className="opacity col-md-11 rounded-3 overflow-hidden">
-          <div className="tab-height px-2 overflow-x-hidden pb-4">
-            <div className="text-end my-4">
+      <div className="h-100vh d-flex justify-content-center flex-column align-items-center">
+        <div className="opacity col-12 col-md-11 rounded-3 overflow-hidden">
+          <div className="pb-4">
+            <div className="text-end m-4">
               <Link to={"/"} className="text-light text-decoration-none fw-semibold">
                 Add Jobs <i className="bi bi-arrow-right"></i>
               </Link>
             </div>
-            <div className="row text-center labels py-3 align-items-center fw-semibold text-capitalize text-white justify-content-center text-start border-bottom position-sticky top-0 opacity table-opacity rounded-top">
-              <div className="col-1">
-                <span>S.No</span>
-              </div>
-              <div className="col">
-                <span>Role Name</span>
-              </div>
-              <div className="col">
-                <span>Openings</span>
-              </div>
-              <div className="col">
-                <span>Remaining openings</span>
-              </div>
-              <div className="col">
-                <span>Status</span>
-              </div>
-              <div className="col">
-                <span>Comments</span>
-              </div>
-            </div>
+            <div className='table-responsive tab-height'>
 
-            {status.map((item, index) => (
-              <div key={index} className={`row justify-content-center text-center job pt-3 fs-6 fw-semibold`}>
-                <div className="col-1">{index + 1}</div>
-                <div className="col">{item.role}</div>
-                <div className="col">{item.openings}</div>
-                <div className="col">{item.remaining_openings}</div>
-                <div className="col">{item.status}</div>
-                <div className="col">{item.comments}</div>
-              </div>
-            ))}
+              <table className="w-100 table m-0 text-white">
+                <thead className="labels text-capitalize text-white text-center table-opacity rounded-top border-bottom">
+                  <td className="col p-md-4 px-4 py-3 ">S.No</td>
+                  <td className="col p-md-4 px-4 py-3 "> Role Name</td>
+                  <td className="col p-md-4 px-4 py-3 ">Openings</td>
+                  <td className="col p-md-4 px-4 py-3 ">Remaining openings</td>
+                  <td className="col p-md-4 px-4 py-3 ">Status</td>
+                  <td className="col p-md-4 px-4 py-3 ">Comments</td>
+                </thead>
+                {status.map((item, index) => (
+                  <tr key={index} className={` job text-center`}>
+
+                    <td className="col p-3">
+                      {index + 1}
+                    </td>
+                    <td className="col p-3">
+                      {item.role}
+                    </td>
+                    <td className="col p-3">
+                      {item.openings}
+                    </td>
+                    <td className="col p-2">
+                      {item.remaining_openings}
+                    </td>
+                    <td className="col p-2">
+                      {item.status}
+                    </td>
+                    <td className="col p-2">
+                      {item.comments}
+                    </td>
+                  </tr>
+                ))}
+              </table>
+            </div>
           </div>
         </div>
       </div>
