@@ -3,17 +3,18 @@ const express = require("express");
 const cors = require("cors");
 const PORT = process.env.PORT || 4000;
 const app = express();
+require('dotenv').config();
  const JobPortal =require("./Routes/route.js");
 
 
 
 app.use(express.json());
 app.use(cors());
-app.use("/api",JobPortal);
+app.use(JobPortal);
 
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/JobPortal", {
+  .connect(`mongodb+srv://admin:${process.env.password}@atlascluster.lllsis7.mongodb.net/?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
