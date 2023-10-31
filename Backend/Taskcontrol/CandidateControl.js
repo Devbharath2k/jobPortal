@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Sehema = require("../Module/SehemaCandidate.js");
 
 const Candidatepostmethod = async (req, res) => {
+  console.log("register called")
   const {
     fname,
     lname,

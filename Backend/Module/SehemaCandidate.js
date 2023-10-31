@@ -27,11 +27,12 @@ const CandidateSchema = new mongoose.Schema({
   },
   salary: {
     type: Number,
-    required: true
+
   },
   Experience: {
     type: String
   }
+ 
 });
 
 module.exports = mongoose.model("Candidate", CandidateSchema);

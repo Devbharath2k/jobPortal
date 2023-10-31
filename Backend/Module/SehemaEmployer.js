@@ -25,13 +25,6 @@ const EmployerSchema = new Schema({
   },
   company: {
     type: String
-  },
-  salary: {
-    type: Number,
-    required: true
-  },
-  experience: {
-    type: String
   }
 });
 

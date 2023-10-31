@@ -92,6 +92,7 @@ const Employer_Status = () => {
   ]);
 
   return (
+
     <div className="main-bg2 h-100vh px-3 overflow-hidden">
       <Bg />
       <div className="h-100vh employer_profile d-flex justify-content-center flex-column align-items-center">
@@ -100,6 +101,7 @@ const Employer_Status = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, molestias eius magnam asperiores expedita explicabo ullam ducimus veniam dolorem, iusto praesentium rem eligendi deleniti, inventore voluptatibus consectetur modi quasi quos.
         </p>
         <Scroll />
+
       </div>
       <div className="h-100vh d-flex justify-content-center flex-column align-items-center text-light">
         <div className="opacity col-md-11 rounded-3 overflow-hidden">

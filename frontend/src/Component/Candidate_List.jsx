@@ -4,14 +4,14 @@ import { useState, useEffect } from 'react'
 const Candidate_list = () => {
     const [status, setStatus] = useState([
         {
-            name: "Dev BHARATH",
+            name: "Ramya",
             role: "Developer",
             date: "20-10-23",
             status: "l1 completed",
             comments: "waiting for update"
         },
         {
-            name: "BHARATH",
+            name: "Dhivya",
             role: "Developer",
             date: "20-10-23",
             status: "l1 completed",
