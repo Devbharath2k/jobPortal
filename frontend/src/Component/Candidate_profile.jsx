@@ -115,7 +115,7 @@ const CandidateProfile = () => {
                   name="budget"
                   className="form-control"
                   min={0}
-                  placeholder="Lpa"
+                  placeholder="LPA"
                   value={role.budget}
                   onChange={(e) => handleInputChange(index, e)}
                   required
