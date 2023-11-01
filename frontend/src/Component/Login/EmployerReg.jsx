@@ -33,7 +33,7 @@ function EmployerReg() {
         <div className="text">Employer Register form</div>
         <form onSubmit={handleSubmit}>
           <div className="form-row">
-            <div className="input-data">
+            <div className="input-data ">
               <input
                 type="text"
                 value={employers.fname}

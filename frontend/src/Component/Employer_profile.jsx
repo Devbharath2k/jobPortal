@@ -168,7 +168,6 @@ const Employer_profile = () => {
                 </table>
               </div>
               {/* ... your input fields ... */}
-
               <button type="submit" className="btn btn-outline-light mx-auto d-block px-4 submit-button">Submit</button>
             </form>
           </div>
