@@ -74,7 +74,7 @@ const Employer_profile = () => {
               <div className="table-responsive tab-height mb-3 " >
                 <table className="w-100 table m-0">
                   <thead className="labels text-capitalize text-white text-center table-opacity rounded-top border-bottom">
-                    <td className="col p-md-4 px-5 py-3 ">cursor</td>
+                    <td className="col p-md-4 px-5 py-3 ">Role Name</td>
                     <td className="col p-md-4 px-5 py-3 "> Openings</td>
                     <td className="col p-md-4 px-5 py-3 ">Budget</td>
                     <td className="col p-md-4 px-5 py-3 ">Experience</td>

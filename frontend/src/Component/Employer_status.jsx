@@ -6,89 +6,59 @@ import Bg from './Bg';
 const Employer_Status = () => {
   const [status, setStatus] = useState([
     {
+      name:"dev",
       role: "Frontend-development",
       openings: 10,
       remaining_openings: 3,
-      status: "open",
-      comments: "still open",
+      status: "selected",
+      comments: "",
+      companyName: "Axess",
     },
     {
+      name:"sundar",
       role: "Backend-development",
       openings: 10,
       remaining_openings: 3,
-      status: "open",
-      comments: "still open",
+      status: "Interview-L2",
+      comments: "",
+      companyName: "Infosis",
     },
     {
+      name:"jay",
       role: "Frontend-development",
       openings: 10,
       remaining_openings: 3,
-      status: "open",
-      comments: "still open",
+      status: "Rejected",
+      comments: "",
+      companyName: "Wipro",
     },
     {
+      name:"nivi",
       role: "Backend-development",
       openings: 10,
       remaining_openings: 3,
-      status: "open",
-      comments: "still open",
+      status: "selected",
+      comments: "",
+      companyName: "Techsoft",
     },
     {
+      name:"hari",
       role: "Frontend-development",
       openings: 10,
       remaining_openings: 3,
-      status: "open",
-      comments: "still open",
+      status: "Rejected",
+      comments: "",
+      companyName: "Nova",
     },
     {
+      name:"lavanya",
       role: "Backend-development",
       openings: 10,
       remaining_openings: 3,
-      status: "open",
-      comments: "still open",
-    },
-    {
-      role: "Frontend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "open",
-      comments: "still open",
-    },
-    {
-      role: "Backend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "open",
-      comments: "still open",
-    },
-    {
-      role: "Frontend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "open",
-      comments: "still open",
-    },
-    {
-      role: "Backend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "open",
-      comments: "still open",
-    },
-    {
-      role: "Frontend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "open",
-      comments: "still open",
-    },
-    {
-      role: "Backend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "open",
-      comments: "still open",
-    },
+      status: "Interview-L1",
+      comments: "",
+      companyName: "Google",
+    }
   ]);
 
   return (
@@ -121,6 +91,7 @@ const Employer_Status = () => {
                   <td className="col p-md-4 px-4 py-3 ">Remaining openings</td>
                   <td className="col p-md-4 px-4 py-3 ">Status</td>
                   <td className="col p-md-4 px-4 py-3 ">Comments</td>
+                  <td className="col p-md-4 px-4 py-3 ">View</td>
                 </thead>
                 {status.map((item, index) => (
                   <tr key={index} className={` job text-center`}>
@@ -136,6 +107,52 @@ const Employer_Status = () => {
                     </td>
                     <td className="col p-3">
                       {item.remaining_openings}
+                    </td>
+                    <td className="col p-3">
+                      {item.status}
+                    </td>
+                    <td className="col p-3">
+                      {item.comments}
+                    </td>
+                    <td className='col'>
+                      <Link to={'#view'} className='bg-transparent'><i class="bi bi-eye bg-transparent cursor  text-light" title='View'></i></Link>
+                    </td>
+                  </tr>
+                ))}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div id='view' className="h-100vh d-flex justify-content-center flex-column align-items-center">
+        <div className="opacity col-12 col-md-11 rounded-3 overflow-hidden">
+          <div className="pb-4">
+            <div className='table-responsive tab-height'>
+
+              <table className="w-100 table m-0 text-white">
+                <thead className="labels text-capitalize text-white text-center table-opacity rounded-top border-bottom">
+                  <td className="col p-md-4 px-4 py-3 ">S.No</td>
+                  <td className="col p-md-4 px-4 py-3 ">  Name</td>
+                  <td className="col p-md-4 px-4 py-3 "> Role</td>
+                  <td className="col p-md-4 px-4 py-3 ">company</td>
+                  <td className="col p-md-4 px-4 py-3 ">status</td>
+                  <td className="col p-md-4 px-4 py-3 ">comment</td>
+                </thead>
+                {status.map((item, index) => (
+                  <tr key={index} className={` job text-center`}>
+
+                    <td className="col p-3">
+                      {index + 1}
+                    </td>
+                    <td className="col p-3">
+                      {item.name}
+                    </td>
+                    <td className="col p-3">
+                      {item.role}
+                    </td>
+                    <td className="col p-3">
+                      {item.companyName}
                     </td>
                     <td className="col p-3">
                       {item.status}
