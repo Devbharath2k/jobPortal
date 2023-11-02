@@ -11,7 +11,7 @@ function EmployerReg() {
           <div className="input-data">
             <input type="text" required />
             <div className=""></div>
-            <label htmlFor="">First Name</label>
+            <label htmlFor="" className=''>First Name</label>
           </div>
           <div className="input-data">
             <input type="text" required />
