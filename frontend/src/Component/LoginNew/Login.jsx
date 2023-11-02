@@ -16,11 +16,10 @@ export default function Login({ onAuthentication }) {
 
   return (
     <div
-      className="col-12 mx-auto main overflow-hidden"
-      style={{ height: "100vh" }}
+      className="col-12 mx-auto main overflow-hidden h-100vh"
     >
-      <div className="row login h-100">
-        <div className=" text-primary p-0 rounded-start-3 col-md-6 bg-white h-100 align-items-center d-flex flex-column justify-content-center position-relative overflow-hidden">
+      <div className="row login">
+        <div className=" text-primary p-0 rounded-start-3 col-md-6 bg-white h-100vh align-items-center d-flex flex-column justify-content-center position-relative overflow-hidden">
           {/* <img className="logonew d-none" src={Logo} /> */}
           <p className="mb-0 logonew1 d-none">HIRE-IT</p>
           <form onSubmit={handleCandidateLogin}>
@@ -132,7 +131,7 @@ export default function Login({ onAuthentication }) {
           </div>
         </div>
         <div
-          className="rounded-end-3 p-0 col-md-6 text-white h-100 align-items-center d-flex flex-column justify-content-center"
+          className="rounded-end-3 p-0 col-md-6 text-white h-100vh align-items-center d-flex flex-column justify-content-center"
           style={{ background: "#4835d4" }}
         >
           <form onSubmit={handleEmployerLogin}>

@@ -2,10 +2,12 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.login input[type = "checkbox"]{
+.login input[type="checkbox"] {
     position: unset;
 }
-input[type="email"] , input[type="password"]{
+
+input[type="email"],
+input[type="password"] {
     background-color: transparent !important;
 }
 
