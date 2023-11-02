@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;  
 
 const JobDetailsSchema = new Schema({
+   
  employerId:{
     type: Number,
     required: true
