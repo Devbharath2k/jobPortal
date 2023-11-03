@@ -24,14 +24,7 @@ const CandidateSchema = new mongoose.Schema({
   company: {
     type: String
   },
-  salary: {
-    type: Number,
-   
-  },
-  experience: {
-    type: String
-  }
- 
+  
 });
 
 module.exports = mongoose.model("Candidate", CandidateSchema);

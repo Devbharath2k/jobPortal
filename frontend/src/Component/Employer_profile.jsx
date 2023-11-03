@@ -6,8 +6,7 @@ import Bg from "./Bg";
 import axios from "axios";
 const Employer_profile = () => {
   const [roleCount, setRoleCount] = useState(1);
-
-  const [formData, setFormData] = useState([{ roleName: "", openings: "" , budget: "", experience: "", notice_period: "", location: "" }]);
+  const [formData, setFormData] = useState([{ roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
   const [emptyFields, setEmptyFields] = useState(Array.from({ length: formData.length }, () => ({})));
 
   const handleInputChange = (index, e) => {
@@ -68,8 +67,7 @@ console.log("formdata",formData)
 
   const addRole = () => {
     setRoleCount(roleCount + 1);
-    setFormData([...formData, { roleName: "", openings: "", budget: "", experience: "", notice_period: "", location: "" }]);
-
+    setFormData([...formData, { roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
     setEmptyFields([...emptyFields, {}]);
   };
 
@@ -99,7 +97,7 @@ console.log("formdata",formData)
                     <td className="col p-md-4 px-5 py-3 "> Openings</td>
                     <td className="col p-md-4 px-5 py-3 ">Budget</td>
                     <td className="col p-md-4 px-5 py-3 ">Experience</td>
-                    <td className="col p-md-4 px-5 py-3 ">Notice period</td>
+                    <td className="col p-md-4 px-5 py-3 ">Days</td>
                     <td className="col p-md-4 px-5 py-3 ">Location</td>
                     <td className="col p-md-4 px-5 py-3  text-center">
                       <i class="bg-transparent bi bi-plus-circle-fill plus-icon text-light hover fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
