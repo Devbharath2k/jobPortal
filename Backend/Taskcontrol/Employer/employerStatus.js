@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const Schema = require("../../Module/InProgressSchema")
 
-const updateInprogress  =async (req,res)=>{
+const updateInprogress  = async (req,res)=>{
 
     try {
         // console.log("req body", req.body);

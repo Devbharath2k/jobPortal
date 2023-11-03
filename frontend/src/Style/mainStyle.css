@@ -73,7 +73,7 @@ video {
 }
 
 .tab-height{
-    max-height: 70vh;
+    max-height: 60vh;
     overflow-y: scroll;
 }
 
@@ -86,8 +86,12 @@ video {
   }
 
   /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 12px;
+  }
+
+  .tab-height::-webkit-scrollbar {
+    width: 5px;
   }
 
   *::-webkit-scrollbar-track {
@@ -373,4 +377,25 @@ video {
     animation-delay: -7s;
     transform-origin: 13vw -16vh;
     box-shadow: 2vmin 0 0.8374367960332745vmin currentColor;
+}
+
+.table-opacity{
+    background: #371843;
+    z-index: 4567;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+}
+
+@media(max-width:768px) {
+    .tab-height{
+        overflow: auto !important;
+    }
+    
+  .table-responsive::-webkit-scrollbar-thumb, .table-responsive::-webkit-scrollbar-track, .table-responsive::-webkit-scrollbar {
+    background-color:transparent;
+    border: none;
+  }
+
+
 }
