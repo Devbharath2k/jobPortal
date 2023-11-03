@@ -5,79 +5,86 @@ import Bg from './Bg';
 import axios from "axios";
 
 const Employer_Status = () => {
-  const [status, setStatus] = useState([
-    {
-      name:"dev",
-      role: "Frontend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "selected",
-      comments: "",
-      companyName: "Axess",
-    },
-    {
-      name:"sundar",
-      role: "Backend-development",
-      openings: 15,
-      remaining_openings: 3,
-      status: "Interview-L2",
-      comments: "",
-      companyName: "Infosis",
-    },
-    {
-      name:"jay",
-      role: "Frontend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "Rejected",
-      comments: "",
-      companyName: "Wipro",
-    },
-    {
-      name:"nivi",
-      role: "Backend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "selected",
-      comments: "",
-      companyName: "Techsoft",
-    },
-    {
-      name:"hari",
-      role: "Frontend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "Rejected",
-      comments: "",
-      companyName: "Nova",
-    },
-    {
-      name:"lavanya",
-      role: "Backend-development",
-      openings: 10,
-      remaining_openings: 3,
-      status: "Interview-L1",
-      comments: "",
-      companyName: "Google",
-    }
-  ]);
+  // const [status, setStatus] = useState([
+  //   {
+  //     name:"dev",
+  //     role: "Frontend-development",
+  //     openings: 10,
+  //     remaining_openings: 3,
+  //     status: "selected",
+  //     comments: "",
+  //     companyName: "Axess",
+  //   },
+  //   {
+  //     name:"sundar",
+  //     role: "Backend-development",
+  //     openings: 15,
+  //     remaining_openings: 3,
+  //     status: "Interview-L2",
+  //     comments: "",
+  //     companyName: "Infosis",
+  //   },
+  //   {
+  //     name:"jay",
+  //     role: "Frontend-development",
+  //     openings: 10,
+  //     remaining_openings: 3,
+  //     status: "Rejected",
+  //     comments: "",
+  //     companyName: "Wipro",
+  //   },
+  //   {
+  //     name:"nivi",
+  //     role: "Backend-development",
+  //     openings: 10,
+  //     remaining_openings: 3,
+  //     status: "selected",
+  //     comments: "",
+  //     companyName: "Techsoft",
+  //   },
+  //   {
+  //     name:"hari",
+  //     role: "Frontend-development",
+  //     openings: 10,
+  //     remaining_openings: 3,
+  //     status: "Rejected",
+  //     comments: "",
+  //     companyName: "Nova",
+  //   },
+  //   {
+  //     name:"lavanya",
+  //     role: "Backend-development",
+  //     openings: 10,
+  //     remaining_openings: 3,
+  //     status: "Interview-L1",
+  //     comments: "",
+  //     companyName: "Google",
+  //   }
+  // ]);
 
 
 
 
   // Assume employerId is a variable containing the employer's ID
-const employerId = 123; // Replace this with the actual employer ID
 
-// Make a GET request with the employerId as a query parameter
-axios.get(`http://localhost:4000/getEmployerStatus?employerId=${employerId}`)
+const [status,setStatus] = useState([])
+  const employerId = "653fa9e3f6bc89bb58baf2c5"; // Replace this with the actual employer ID
+
+
+useEffect(()=>{ 
+  axios.get(`http://localhost:4000/getEmployerStatus?employerId=${employerId}`)
   .then((response) => {
     // Handle the response data from the backend
-    console.log(response.data);
+    console.log(response.data.jobDetailsList);
+    setStatus(response.data.jobDetailsList)
   })
   .catch((error) => {
     // Handle errors
     console.error(error);
   });
+},[])
+// Make a GET request with the employerId as a query parameter
+
 
   return (
 

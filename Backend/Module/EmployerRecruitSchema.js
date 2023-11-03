@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const JobDetailsSchema = new Schema({
    
  employerId:{
-    type: Number,
+    type: String,
     required: true
  },
  roleName:{
@@ -38,7 +38,7 @@ const JobDetailsSchema = new Schema({
   },
   remaining_openings:{
     type:Number,
-    default:null
+
   },
   comments:{
     type:String

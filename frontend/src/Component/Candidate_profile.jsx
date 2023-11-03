@@ -15,11 +15,17 @@ const CandidateProfile = () => {
   ]);
 
   const addRow = () => {
-    setProfiles([...profiles, {}]);
+    setProfiles([...profiles, {
+      TechStack: "",
+      Experience: 0,
+      ExpectedCTC: 0,
+      Location: "",
+    }]);
   };
 
   const Handlesubmit = (event) => {
     event.preventDefault();
+    console.log("profile",profiles)
     axios
       .post("http://localhost:4000/api/candidatepost", profiles)
       .then((res) => {

@@ -36,13 +36,13 @@ const getEmployerStatus = async (req, res) => {
   try {
 
     const employerId = req.query.employerId;
-
+console.log("employerId",employerId)
     // Access the MongoDB collection directly using the mongoose connection object
     const jobDetailsCollection = mongoose.connection.collection('jobdetails'); // Replace 'jobdetails' with your actual collection name
 
     // Find documents based on employerId
     const jobDetailsList = await jobDetailsCollection.find({ employerId: employerId }).toArray();
-
+console.log("jobDetailsList",jobDetailsList)
     // Extract specific fields from each document
     const simplifiedJobDetailsList = jobDetailsList.map((jobDetails) => {
       return {

@@ -8,7 +8,6 @@ const Employer_profile = () => {
   const [roleCount, setRoleCount] = useState(1);
 
   const [formData, setFormData] = useState([{ roleName: "", openings: "" , budget: "", experience: "", notice_period: "", location: "" }]);
-
   const [emptyFields, setEmptyFields] = useState(Array.from({ length: formData.length }, () => ({})));
 
   const handleInputChange = (index, e) => {
@@ -31,7 +30,7 @@ const Employer_profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+console.log("formdata",formData)
     // Validation: Check if any form field is empty
     const emptyFieldsData = formData.map((role) => {
       return Object.fromEntries(Object.entries(role).map(([key, value]) => [key, value === '']));
@@ -45,12 +44,13 @@ const Employer_profile = () => {
       console.error("Error: All fields must be filled out.");
     } else {
       console.log(formData);
-      let employerId = 12
+      let employerId = "653fa9e3f6bc89bb58baf2c5"
       let company = "xyz"
         axios.post("http://localhost:4000/employerProfilePost",{
           formData: formData,
           employerId: employerId,
-          company: company
+          company: company,
+          
         })
         .then((res)=>{
               console.log("succes req")
@@ -99,7 +99,7 @@ const Employer_profile = () => {
                     <td className="col p-md-4 px-5 py-3 "> Openings</td>
                     <td className="col p-md-4 px-5 py-3 ">Budget</td>
                     <td className="col p-md-4 px-5 py-3 ">Experience</td>
-                    <td className="col p-md-4 px-5 py-3 ">Days</td>
+                    <td className="col p-md-4 px-5 py-3 ">Notice period</td>
                     <td className="col p-md-4 px-5 py-3 ">Location</td>
                     <td className="col p-md-4 px-5 py-3  text-center">
                       <i class="bg-transparent bi bi-plus-circle-fill plus-icon text-light hover fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
@@ -162,8 +162,8 @@ const Employer_profile = () => {
                           type="text"
                           className="form-control"
                           placeholder="Days"
-                          name="days"
-                          value={role.days}
+                          name="notice_period"
+                          value={role.notice_period}
                           onChange={(e) => handleInputChange(index, e)}
                           required
                         />
