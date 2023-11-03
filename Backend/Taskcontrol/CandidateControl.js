@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Sehema = require("../Module/SehemaCandidate.js");
-// const bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
 const Candidatepostmethod  = async (req, res) => {
   const {
@@ -9,9 +9,7 @@ const Candidatepostmethod  = async (req, res) => {
     email,
     password,
     phone,
-    salary,
     company,
-    experience
   } = req.body;
   try {
     const newUser = new Sehema({
@@ -20,9 +18,7 @@ const Candidatepostmethod  = async (req, res) => {
       email,
       password,
       phone,
-      salary,
       company,
-      experience
     });
     const existingUser = await Sehema.findOne({ email });
 
@@ -31,8 +27,8 @@ const Candidatepostmethod  = async (req, res) => {
         message: "User already exists"
       });
     }
-    // const hashedPassword = await bcrypt.hash(password, 10);
-    // newUser.password = hashedPassword;
+   const hashedPassword = await bcrypt.hash(password, 10);
+    newUser.password = hashedPassword;
     
 
     await newUser.save();

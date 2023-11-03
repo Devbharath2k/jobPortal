@@ -10,8 +10,8 @@ const CandidateProfile = () => {
       TechStack: "",
       Experience: 0,
       ExpectedCTC: 0,
-      Location: ""
-    }
+      Location: "",
+    },
   ]);
 
   const addRow = () => {
@@ -21,19 +21,19 @@ const CandidateProfile = () => {
         TechStack: "",
         Experience: 0,
         ExpectedCTC: 0,
-        Location: ""
-      }
+        Location: "",
+      },
     ]);
   };
 
-  const Handlesubmit = event => {
+  const Handlesubmit = (event) => {
     event.preventDefault();
     axios
       .post("http://localhost:4000/api/candidatepost", profiles)
-      .then(res => {
+      .then((res) => {
         console.log(res.data.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -42,8 +42,14 @@ const CandidateProfile = () => {
     const newProfiles = [...profiles];
     newProfiles[index] = {
       ...newProfiles[index],
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     };
+    setProfiles(newProfiles);
+  };
+
+  const handleDelete = (index) => {
+    const newProfiles = [...profiles];
+    newProfiles.splice(index, 1);
     setProfiles(newProfiles);
   };
 
@@ -92,51 +98,59 @@ const CandidateProfile = () => {
                     </th>
                   </tr>
                 </thead>
-                {profiles.map((profile, index) =>
-                  <tr key={index}>
-                    <td className="col ps-4 pt-3">
-                      <input
-                        type="text"
-                        name="TechStack"
-                        className="form-control"
-                        placeholder="Role Name"
-                        value={profile.TechStack}
-                        onChange={e => handleInputChange(index, e)}
-                      />
-                    </td>
-                    <td className="col ps-4 pt-3">
-                      <input
-                        type="number"
-                        name="Experience"
-                        className="form-control"
-                        placeholder="Experience"
-                        value={profile.Experience}
-                        onChange={e => handleInputChange(index, e)}
-                      />
-                    </td>
-                    <td className="col ps-4 pt-3">
-                      <input
-                        type="number"
-                        name="ExpectedCTC"
-                        className="form-control"
-                        min={0}
-                        placeholder="Lpa"
-                        value={profile.ExpectedCTC}
-                        onChange={e => handleInputChange(index, e)}
-                      />
-                    </td>
-                    <td className="col ps-4 pt-3">
-                      <input
-                        type="text"
-                        name="Location"
-                        className="form-control"
-                        placeholder="Location"
-                        value={profile.Location}
-                        onChange={e => handleInputChange(index, e)}
-                      />
-                    </td>
-                  </tr>
-                )}
+                <tbody>
+                  {profiles.map((profile, index) => (
+                    <tr key={index}>
+                      <td className="col ps-4 pt-3">
+                        <input
+                          type="text"
+                          name="TechStack"
+                          className="form-control"
+                          placeholder="Role Name"
+                          value={profile.TechStack}
+                          onChange={(e) => handleInputChange(index, e)}
+                        />
+                      </td>
+                      <td className="col ps-4 pt-3">
+                        <input
+                          type="number"
+                          name="Experience"
+                          className="form-control"
+                          placeholder="Experience"
+                          value={profile.Experience}
+                          onChange={(e) => handleInputChange(index, e)}
+                        />
+                      </td>
+                      <td className="col ps-4 pt-3">
+                        <input
+                          type="number"
+                          name="ExpectedCTC"
+                          className="form-control"
+                          min={0}
+                          placeholder="Lpa"
+                          value={profile.ExpectedCTC}
+                          onChange={(e) => handleInputChange(index, e)}
+                        />
+                      </td>
+                      <td className="col ps-4 pt-3">
+                        <input
+                          type="text"
+                          name="Location"
+                          className="form-control"
+                          placeholder="Location"
+                          value={profile.Location}
+                          onChange={(e) => handleInputChange(index, e)}
+                        />
+                      </td>
+                      <td className="col ps-4 pt-3">
+                        <i
+                          className="bi bi-trash mx-3 text-danger cursor bg-transparent"
+                          onClick={() => handleDelete(index)}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
             <button

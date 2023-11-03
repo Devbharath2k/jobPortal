@@ -9,15 +9,14 @@ function EmployerReg() {
     lname: "",
     email: "",
     company: "",
-    salary: "",
-    experience: "",
     phone: "",
     password: ""
   });
 
   const handleSubmit = event => {
     event.preventDefault();
-    axios.post("http://localhost:4000/employerpost", employers)
+    axios
+      .post("http://localhost:4000/employerpost", employers)
       .then(response => {
         console.log(response.data.data);
       })
@@ -41,8 +40,7 @@ function EmployerReg() {
                   setEmployers({
                     ...employers,
                     fname: e.target.value
-                  })
-                }
+                  })}
               />
               <div className="" />
               <label htmlFor="">First Name</label>
@@ -55,8 +53,7 @@ function EmployerReg() {
                   setEmployers({
                     ...employers,
                     lname: e.target.value
-                  })
-                }
+                  })}
               />
               <div className="underline" />
               <label htmlFor="">Last Name</label>
@@ -71,8 +68,7 @@ function EmployerReg() {
                   setEmployers({
                     ...employers,
                     email: e.target.value
-                  })
-                }
+                  })}
               />
               <div className="underline" />
               <label htmlFor="">Email Address</label>
@@ -85,43 +81,13 @@ function EmployerReg() {
                   setEmployers({
                     ...employers,
                     company: e.target.value
-                  })
-                }
+                  })}
               />
               <div className="underline" />
               <label htmlFor="">Current company</label>
             </div>
           </div>
-          <div className="form-row">
-            <div className="input-data">
-              <input
-                type="text"
-                value={employers.salary}
-                onChange={e =>
-                  setEmployers({
-                    ...employers,
-                    salary: e.target.value
-                  })
-                }
-              />
-              <div className="underline" />
-              <label htmlFor="">Current CTC</label>
-            </div>
-            <div className="input-data">
-              <input
-                type="text"
-                value={employers.experience}
-                onChange={e =>
-                  setEmployers({
-                    ...employers,
-                    experience: e.target.value
-                  })
-                }
-              />
-              <div className="underline" />
-              <label htmlFor="">Total Experience</label>
-            </div>
-          </div>
+
           <div className="form-row">
             <div className="input-data">
               <input
@@ -131,8 +97,7 @@ function EmployerReg() {
                   setEmployers({
                     ...employers,
                     phone: e.target.value
-                  })
-                }
+                  })}
               />
               <div className="underline" />
               <label htmlFor="">Phone Number</label>
@@ -145,8 +110,7 @@ function EmployerReg() {
                   setEmployers({
                     ...employers,
                     password: e.target.value
-                  })
-                }
+                  })}
               />
               <div className="underline" />
               <label htmlFor="">Password</label>

@@ -6,7 +6,7 @@ import Bg from "./Bg";
 
 const Employer_profile = () => {
   const [roleCount, setRoleCount] = useState(1);
-  const [formData, setFormData] = useState([{ roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
+  const [formData, setFormData] = useState([{ roleName: "", openings: 0, budget: 0, experience: 0, notice_period: "", location: "" }]);
   const [emptyFields, setEmptyFields] = useState(Array.from({ length: formData.length }, () => ({})));
 
   const handleInputChange = (index, e) => {
@@ -48,7 +48,7 @@ const Employer_profile = () => {
 
   const addRole = () => {
     setRoleCount(roleCount + 1);
-    setFormData([...formData, { roleName: "", openings: 0, budget: 0, experience: 0, days: "", location: "" }]);
+    setFormData([...formData, { roleName: "", openings: 0, budget: 0, experience: 0, notice_period: "", location: "" }]);
     setEmptyFields([...emptyFields, {}]);
   };
 
@@ -78,7 +78,7 @@ const Employer_profile = () => {
                     <td className="col p-md-4 px-5 py-3 "> Openings</td>
                     <td className="col p-md-4 px-5 py-3 ">Budget</td>
                     <td className="col p-md-4 px-5 py-3 ">Experience</td>
-                    <td className="col p-md-4 px-5 py-3 ">Days</td>
+                    <td className="col p-md-4 px-5 py-3 ">Notice_period</td>
                     <td className="col p-md-4 px-5 py-3 ">Location</td>
                     <td className="col p-md-4 px-5 py-3  text-center">
                       <i class="bg-transparent bi bi-plus-circle-fill plus-icon text-light hover fs-4 ms-2 cursor" title="Add a new row" onClick={addRole}></i>
@@ -141,8 +141,8 @@ const Employer_profile = () => {
                           type="text"
                           className="form-control"
                           placeholder="Days"
-                          name="days"
-                          value={role.days}
+                          name="notice_period"
+                          value={role.notice_period}
                           onChange={(e) => handleInputChange(index, e)}
                           required
                         />
