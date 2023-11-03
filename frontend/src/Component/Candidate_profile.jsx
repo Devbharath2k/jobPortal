@@ -5,17 +5,23 @@ import Bg from "./Bg";
 import axios from "axios";
 
 const CandidateProfile = () => {
-  const [profile, Setprofile] = useState({
-    TechStack: "",
-    Experience: 0, 
-    ExpectedCTC: 0,
-    Location: "",
-  });
+  const [profiles, setProfiles] = useState([
+    {
+      TechStack: "",
+      Experience: 0,
+      ExpectedCTC: 0,
+      Location: "",
+    },
+  ]);
+
+  const addRow = () => {
+    setProfiles([...profiles, {}]);
+  };
 
   const Handlesubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:4000/api/candidatepost", profile)
+      .post("http://localhost:4000/api/candidatepost", profiles)
       .then((res) => {
         console.log(res.data.data);
       })
@@ -24,11 +30,17 @@ const CandidateProfile = () => {
       });
   };
 
+  const handleInputChange = (index, event) => {
+    const newProfiles = [...profiles];
+    newProfiles[index] = { ...newProfiles[index], [event.target.name]: event.target.value };
+    setProfiles(newProfiles);
+  };
+
   return (
     <div className="main-bg3 h-100vh px-3 overflow-hidden">
       <Bg />
       <div className="h-100vh employer_profile d-flex justify-content-center flex-column align-items-center">
-        <h2 className="py-2 text-center text-light" style={{ fontFamily: "cursive" }}>
+       <h2 className="py-2 text-center text-light" style={{ fontFamily: "cursive" }}>
           Candidate Profile
         </h2>
         <p className="col-md-8 text-center text-light">
@@ -55,87 +67,56 @@ const CandidateProfile = () => {
                     <th className="col p-md-4 px-5 py-3">Experience</th>
                     <th className="col p-md-4 px-5 py-3">Expected CTC</th>
                     <th className="col p-md-4 px-5 py-3">Location</th>
-                    <th className="col p-md-4 px-5 py-3"><i class="bi bi-plus-circle fs-5 ms-auto cursor"></i></th>
-                    <th className="col p-md-4 px-5 py-3 text-center">
-                      <i
-                        className="bi bi-plus-circle-fill text-white plus-icon bg-transparent fs-4 ms-2 cursor"
-                        title="Add a new row"
-                      />
+                    <th className="col p-md-4 px-5 py-3">
+                      <i className="bi bi-plus-circle fs-5 ms-auto cursor" onClick={addRow} />
                     </th>
                   </tr>
                 </thead>
-                <tr>
-                  <td className="col ps-4 pt-3">
-                    <input
-                      type="text"
-                      name="TechStack"
-                      className="form-control"
-                      placeholder="Role Name"
-                      value={profile.TechStack}
-                      onChange={(e) =>
-                        Setprofile((prevProfile) => ({
-                          ...prevProfile,
-                          TechStack: e.target.value,
-                        }))
-                      }
-                    />
-                  </td>
-                  <td className="col ps-4 pt-3">
-                    <input
-                      type="number"
-                      name="Experience"
-                      className="form-control"
-                      placeholder="Experience"
-                      value={profile.Experience}
-                      onChange={(e) =>
-                        Setprofile((prevProfile) => ({
-                          ...prevProfile,
-                          Experience: e.target.value,
-                        }))
-                      }
-                    />
-                  </td>
-                  <td className="col ps-4 pt-3">
-                    <input
-                      type="number"
-                      name="ExpectedCTC"
-                      className="form-control"
-                      min={0}
-                      placeholder="Lpa"
-                      value={profile.ExpectedCTC}
-                      onChange={(e) =>
-                        Setprofile((prevProfile) => ({
-                          ...prevProfile,
-                          ExpectedCTC: e.target.value,
-                        }))
-                      }
-                    />
-                  </td>
-                  <td className="col ps-4 pt-3">
-                    <input
-                      type="text"
-                      name="Location"
-                      className="form-control"
-                      placeholder="Location"
-                      value={profile.Location}
-                      onChange={(e) =>
-                        Setprofile((prevProfile) => ({
-                          ...prevProfile,
-                          Location: e.target.value,
-                        }))
-                      }
-                    />
-                  </td>
-                  <td className="col-1 text-center p-3">
-                    <span className="ms-2 text-danger bg-transparent">
-                      <i
-                        className="bi bi-trash-fill delete-icon cursor"
-                        title="Delete hover the row"
-                        style={{ fontSize: "20px" }}
+                {profiles.map((profile, index) => (
+                  <tr key={index}>
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="text"
+                        name="TechStack"
+                        className="form-control"
+                        placeholder="Role Name"
+                        value={profile.TechStack}
+                        onChange={(e) => handleInputChange(index, e)}
                       />
-                    </span>
-                  </td>
-                </tr>
+                    </td>
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="number"
+                        name="Experience"
+                        className="form-control"
+                        placeholder="Experience"
+                        value={profile.Experience}
+                        onChange={(e) => handleInputChange(index, e)}
+                      />
+                    </td>
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="number"
+                        name="ExpectedCTC"
+                        className="form-control"
+                        min={0}
+                        placeholder="Lpa"
+                        value={profile.ExpectedCTC}
+                        onChange={(e) => handleInputChange(index, e)}
+                      />
+                    </td>
+                    <td className="col ps-4 pt-3">
+                      <input
+                        type="text"
+                        name="Location"
+                        className="form-control"
+                        placeholder="Location"
+                        value={profile.Location}
+                        onChange={(e) => handleInputChange(index, e)}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </table>
             </div>
             <button
@@ -152,5 +133,3 @@ const CandidateProfile = () => {
 };
 
 export default CandidateProfile;
-
-
