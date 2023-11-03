@@ -10,29 +10,40 @@ const CandidateProfile = () => {
       TechStack: "",
       Experience: 0,
       ExpectedCTC: 0,
-      Location: "",
-    },
+      Location: ""
+    }
   ]);
 
   const addRow = () => {
-    setProfiles([...profiles, {}]);
+    setProfiles([
+      ...profiles,
+      {
+        TechStack: "",
+        Experience: 0,
+        ExpectedCTC: 0,
+        Location: ""
+      }
+    ]);
   };
 
-  const Handlesubmit = (event) => {
+  const Handlesubmit = event => {
     event.preventDefault();
     axios
       .post("http://localhost:4000/api/candidatepost", profiles)
-      .then((res) => {
+      .then(res => {
         console.log(res.data.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
 
   const handleInputChange = (index, event) => {
     const newProfiles = [...profiles];
-    newProfiles[index] = { ...newProfiles[index], [event.target.name]: event.target.value };
+    newProfiles[index] = {
+      ...newProfiles[index],
+      [event.target.name]: event.target.value
+    };
     setProfiles(newProfiles);
   };
 
@@ -40,7 +51,10 @@ const CandidateProfile = () => {
     <div className="main-bg3 h-100vh px-3 overflow-hidden">
       <Bg />
       <div className="h-100vh employer_profile d-flex justify-content-center flex-column align-items-center">
-       <h2 className="py-2 text-center text-light" style={{ fontFamily: "cursive" }}>
+        <h2
+          className="py-2 text-center text-light"
+          style={{ fontFamily: "cursive" }}
+        >
           Candidate Profile
         </h2>
         <p className="col-md-8 text-center text-light">
@@ -54,7 +68,10 @@ const CandidateProfile = () => {
       <div className="h-100vh d-flex justify-content-center flex-column align-items-center">
         <div className="opacity col-12 col-md-11 rounded-3 overflow-hidden pb-4">
           <div className="text-end m-4">
-            <Link to={"/candidate_Status"} className="text-white text-decoration-none fw-semibold">
+            <Link
+              to={"/candidate_Status"}
+              className="text-white text-decoration-none fw-semibold"
+            >
               view status <i className="bi bi-arrow-right" />
             </Link>
           </div>
@@ -68,11 +85,14 @@ const CandidateProfile = () => {
                     <th className="col p-md-4 px-5 py-3">Expected CTC</th>
                     <th className="col p-md-4 px-5 py-3">Location</th>
                     <th className="col p-md-4 px-5 py-3">
-                      <i className="bi bi-plus-circle fs-5 ms-auto cursor" onClick={addRow} />
+                      <i
+                        className="bi bi-plus-circle fs-5 ms-auto cursor"
+                        onClick={addRow}
+                      />
                     </th>
                   </tr>
                 </thead>
-                {profiles.map((profile, index) => (
+                {profiles.map((profile, index) =>
                   <tr key={index}>
                     <td className="col ps-4 pt-3">
                       <input
@@ -81,7 +101,7 @@ const CandidateProfile = () => {
                         className="form-control"
                         placeholder="Role Name"
                         value={profile.TechStack}
-                        onChange={(e) => handleInputChange(index, e)}
+                        onChange={e => handleInputChange(index, e)}
                       />
                     </td>
                     <td className="col ps-4 pt-3">
@@ -91,7 +111,7 @@ const CandidateProfile = () => {
                         className="form-control"
                         placeholder="Experience"
                         value={profile.Experience}
-                        onChange={(e) => handleInputChange(index, e)}
+                        onChange={e => handleInputChange(index, e)}
                       />
                     </td>
                     <td className="col ps-4 pt-3">
@@ -102,7 +122,7 @@ const CandidateProfile = () => {
                         min={0}
                         placeholder="Lpa"
                         value={profile.ExpectedCTC}
-                        onChange={(e) => handleInputChange(index, e)}
+                        onChange={e => handleInputChange(index, e)}
                       />
                     </td>
                     <td className="col ps-4 pt-3">
@@ -112,11 +132,11 @@ const CandidateProfile = () => {
                         className="form-control"
                         placeholder="Location"
                         value={profile.Location}
-                        onChange={(e) => handleInputChange(index, e)}
+                        onChange={e => handleInputChange(index, e)}
                       />
                     </td>
                   </tr>
-                ))}
+                )}
               </table>
             </div>
             <button
