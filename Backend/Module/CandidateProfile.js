@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const Candidateprofile = new Schema({
   TechStack: {
     type: "string",
-   
     
   },
   Experience: {

@@ -28,7 +28,7 @@ const CandidateSchema = new mongoose.Schema({
     type: Number,
    
   },
-  Experience: {
+  experience: {
     type: String
   }
  

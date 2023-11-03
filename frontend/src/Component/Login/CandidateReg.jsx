@@ -2,17 +2,52 @@ import React from "react";
 import "./CandidateReg.css";
 import image from "../../assets/image-1.png";
 import image1 from "../../assets/image-2.png";
+import axios from "axios";
+import { useState } from "react";
 
 function CandidateReg() {
+  const [Regcandidate, SetCandidate] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    company:"",
+    salary:"",
+    experience:"",
+    phone:"",
+    password:"",
+  });
+
+  const Handlesubmit = (event) => {
+    event.preventDefault();
+    axios.post("http://localhost:4000/Candidatepost", Regcandidate)
+      .then((res) => {
+        if (res.data) {
+          console.log(res.data.data);
+        } else {
+          console.log("Response data is undefined");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response && err.response.data) {
+          console.log(err.response.data);
+        } else {
+          console.log("Error response data is undefined");
+        }
+      });
+  }
+  
+  
+
   return (
     <div className="container-fluid" id="CandidateReg">
       <div className="wrapper">
         <div className="inner">
           <img src={image} alt="" className="image-1" />
-          <form>
+          <form onSubmit={Handlesubmit}>
             <div className="justify-content-center align-items-center">
               <p className="display-6 text-center">
-                <span className="text-primary">Candidate </span>Register  Account
+                <span className="text-primary">Candidate </span>Register Account
               </p>
               <hr className="w-100 text-primary" />
             </div>
@@ -27,6 +62,12 @@ function CandidateReg() {
                   className="form-control"
                   placeholder="First Name"
                   id="firstName"
+                  value={Regcandidate.fname}
+                  onChange={e =>
+                    SetCandidate({
+                      ...Regcandidate,
+                      fname: e.target.value
+                    })}
                 />
               </div>
               <div className="col-md-6">
@@ -35,10 +76,16 @@ function CandidateReg() {
                 </label>
                 <input
                   type="text"
-                  name="lastName"
+                  name="lname"
                   className="form-control"
                   placeholder="Last Name"
-                  id="lastName"
+                  id="lname"
+                  value={Regcandidate.lname}
+                  onChange={e =>
+                    SetCandidate({
+                      ...Regcandidate,
+                      lname: e.target.value
+                    })}
                 />
               </div>
               <div className="col-md-6">
@@ -51,6 +98,12 @@ function CandidateReg() {
                   className="form-control"
                   placeholder="E-mail"
                   id="email"
+                  value={Regcandidate.email}
+                  onChange={e =>
+                    SetCandidate({
+                      ...Regcandidate,
+                      email: e.target.value
+                    })}
                 />
               </div>
               <div className="col-md-6">
@@ -59,10 +112,16 @@ function CandidateReg() {
                 </label>
                 <input
                   type="text"
-                  name="currentCompany"
+                  name="company"
                   className="form-control"
                   placeholder="Current Company"
-                  id="currentCompany"
+                  id="company"
+                  value={Regcandidate.company}
+                  onChange={e =>
+                    SetCandidate({
+                      ...Regcandidate,
+                      company: e.target.value
+                    })}
                 />
               </div>
               <div className="col-md-6">
@@ -71,10 +130,16 @@ function CandidateReg() {
                 </label>
                 <input
                   type="text"
-                  name="currentCTC"
+                  name="salary"
                   className="form-control"
                   placeholder="Current CTC"
-                  id="currentCTC"
+                  id="salary"
+                  value={Regcandidate.salary}
+                  onChange={e =>
+                    SetCandidate({
+                      ...Regcandidate,
+                      salary: e.target.value
+                    })}
                 />
               </div>
               <div className="col-md-6">
@@ -83,10 +148,17 @@ function CandidateReg() {
                 </label>
                 <input
                   type="text"
-                  name="totalExperience"
+                  name="experience"
                   className="form-control"
                   placeholder="Total Experience"
-                  id="totalExperience"
+                  id="experience"
+                  value={Regcandidate.experience}
+                  onChange={e =>
+                    SetCandidate({
+                      ...Regcandidate,
+                      experience: e.target.value
+                    })}
+                  
                 />
               </div>
               <div className="col-md-6">
@@ -95,10 +167,17 @@ function CandidateReg() {
                 </label>
                 <input
                   type="number"
-                  name="phoneNumber"
+                  name="phone"
                   className="form-control"
                   placeholder="Phone Number"
-                  id="phoneNumber"
+                  id="phone"
+                  value={Regcandidate.phone}
+                  onChange={e =>
+                    SetCandidate({
+                      ...Regcandidate,
+                      phone: e.target.value
+                    })}
+                  
                 />
               </div>
               <div className="col-md-6">
@@ -111,9 +190,15 @@ function CandidateReg() {
                   className="form-control"
                   placeholder="Password"
                   id="password"
+                  value={Regcandidate.password}
+                  onChange={e =>
+                    SetCandidate({
+                      ...Regcandidate,
+                      password: e.target.value
+                    })}
                 />
               </div>
-              <button className="btn btn-primary mt-4">Submit</button>
+              <button className="btn btn-primary mt-4" type={"submit"}>Submit</button>
             </div>
           </form>
           <img src={image1} alt="" className="image-2" />
